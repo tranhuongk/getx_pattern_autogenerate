@@ -9,7 +9,7 @@ class HomeBinding implements Bindings {
     Get.lazyPut<HomeController>(
       () => HomeController(
         repository: HomeRepository(
-          apiClient: HomeProvider(),
+          provider: HomeProvider(),
         ),
       ),
     );

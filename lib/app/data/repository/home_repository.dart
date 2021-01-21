@@ -2,19 +2,19 @@ import 'package:getx_pattern_form/app/data/provider/home_provider.dart';
 import 'package:meta/meta.dart';
 
 class HomeRepository {
-  final HomeProvider apiClient;
+  final HomeProvider provider;
 
-  HomeRepository({@required this.apiClient}) : assert(apiClient != null);
+  HomeRepository({@required this.provider}) : assert(provider != null);
 
   getUser(id) {
-    return apiClient.getUser(id);
+    return provider.getUser(id);
   }
 
   postUser(Map data) {
-    return apiClient.postUser(data);
+    return provider.postUser(data);
   }
 
   userMessages() {
-    return apiClient.userMessages();
+    return provider.userMessages();
   }
 }
