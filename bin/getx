@@ -76,76 +76,6 @@ Run \"getx install\" to install getx pattern in your project."
     exit 1
 }
 
-if [ "$1" == "create" ]; then
-    while [ "$2" != "" ]; do
-        case $2 in
-        # --platforms)
-        #     shift
-        #     platforms="$2"
-        #     ;;
-        # --no-pub)
-        #     shift
-        #     no_pub=1
-        #     ;;
-        # --[no-]offline )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # --[no-]with-driver-test )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # -t, --template=<type> )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # -s, --sample=<id> )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # --list-samples=<path> )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # --[no-]overwrite )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # --description )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # --org )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # --project-name )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # -i, --ios-language )   shift
-        #                         interactive="$1"
-        #                         ;;
-        # -a, --android-language )   shift
-        #                         interactive="$1"
-        #                         ;;
-
-        -h | --help)
-            usage
-            exit
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
-        esac
-        shift
-    done
-fi
-
-while [ "$1" != "install" ] && [ "$1" != "create" ]; do
-    case $1 in
-    -v | --version | version)
-        echo "-----------------------------
-GetX Pattern Version: v$version
------------------------------"
-        exit
-        ;;
-    esac
-    shift
-done
-
 if [ "$1" == "install" ]; then
     FILE=$pwd/pubspec.yaml
     if [ -f "$FILE" ]; then
@@ -162,8 +92,78 @@ Please create a Flutter Project first and go to this directory!
 
 ----------------------------------------------------------------"
     fi
+else
+    if [ "$1" == "create" ]; then
+        while [ "$2" != "" ]; do
+            case $2 in
+            # --platforms)
+            #     shift
+            #     platforms="$2"
+            #     ;;
+            # --no-pub)
+            #     shift
+            #     no_pub=1
+            #     ;;
+            # --[no-]offline )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # --[no-]with-driver-test )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # -t, --template=<type> )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # -s, --sample=<id> )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # --list-samples=<path> )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # --[no-]overwrite )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # --description )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # --org )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # --project-name )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # -i, --ios-language )   shift
+            #                         interactive="$1"
+            #                         ;;
+            # -a, --android-language )   shift
+            #                         interactive="$1"
+            #                         ;;
+
+            -h | --help)
+                usage
+                exit
+                ;;
+            *)
+                usage
+                exit 1
+                ;;
+            esac
+            shift
+        done
+    else
+        if [ "$1" == "upgrade" ] || [ "$1" == "update" ]; then
+            git -C "${BASEDIR%\/bin}" pull
+        else
+            while [ "$1" != "install" ] && [ "$1" != "create" ]; do
+                case $1 in
+                -v | --version | version)
+                    echo "-----------------------------
+GetX Pattern Version: v$version
+-----------------------------"
+                    exit
+                    ;;
+                esac
+                shift
+            done
+        fi
+    fi
 fi
-
-create="flutter create ${platforms}"
-
-# echo $create
