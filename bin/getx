@@ -1,0 +1,155 @@
+#!/bin/bash
+
+pwd=$(pwd)
+BASEDIR=$(dirname "$0")
+lib=${BASEDIR%\/bin}/lib
+
+function usage() {
+    echo "Usage: getx create <output directory>
+-h, --help                     Print this usage information.
+    --platforms                The platforms supported by this project. This
+                               argument only works when the --template is set
+                               to app or plugin. Platform folders (e.g.
+                               android/) will be generated in the target
+                               project. When adding platforms to a plugin
+                               project, the pubspec.yaml will be updated with
+                               the requested platform. Adding desktop
+                               platforms requires the corresponding desktop
+                               config setting to be enabled.
+                               [ios (default), android (default), windows
+                               (default), linux (default), macos (default),
+                               web (default)]
+    --[no-]pub                 Whether to run \"flutter pub get\" after the
+                               project has been created.
+                               (defaults to on)
+    --[no-]offline             When \"flutter pub get\" is run by the create
+                               command, this indicates whether to run it in
+                               offline mode or not. In offline mode, it will
+                               need to have all dependencies already available
+                               in the pub cache to succeed.
+    --[no-]with-driver-test    Also add a flutter_driver dependency and
+                               generate a sample \"flutter drive\" test.
+-t, --template=<type>          Specify the type of project to create.
+
+          [app]                (default) Generate a Flutter application.
+          [module]             Generate a project to add a Flutter module to
+                               an existing Android or iOS application.
+          [package]            Generate a shareable Flutter project containing
+                               modular Dart code.
+          [plugin]             Generate a shareable Flutter project containing
+                               an API in Dart code with a platform-specific
+                               implementation for Android, for iOS code, or
+                               for both.
+
+-s, --sample=<id>              Specifies the Flutter code sample to use as the
+                               main.dart for an application. Implies
+                               --template=app. The value should be the sample
+                               ID of the desired sample from the API
+                               documentation website
+                               (http://docs.flutter.dev). An example can be
+                               found at
+                               https://master-api.flutter.dev/flutter/widgets/
+                               SingleChildScrollView-class.html
+    --list-samples=<path>      Specifies a JSON output file for a listing of
+                               Flutter code samples that can be created with
+                               --sample.
+    --[no-]overwrite           When performing operations, overwrite existing
+                               files.
+    --description              The description to use for your new Flutter
+                               project. This string ends up in the
+                               pubspec.yaml file.
+                               (defaults to \"A new Flutter project.\")
+    --org                      The organization responsible for your new
+                               Flutter project, in reverse domain name
+                               notation. This string is used in Java package
+                               names and as prefix in the iOS bundle
+                               identifier.
+                               (defaults to \"com.example\")
+    --project-name             The project name for this new Flutter project.
+                               This must be a valid dart package name.
+-i, --ios-language             [objc, swift (default)]
+-a, --android-language         [java, kotlin (default)]
+
+Run \"getx install\" to install getx pattern in your project."
+    exit 1
+}
+
+no_pub=0
+
+if [ "$1" == "create" ]; then
+    while [ "$2" != "" ]; do
+        case $2 in
+        --platforms)
+            shift
+            platforms="$2"
+            ;;
+        --no-pub)
+            shift
+            no_pub=1
+            ;;
+        # --[no-]offline )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # --[no-]with-driver-test )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # -t, --template=<type> )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # -s, --sample=<id> )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # --list-samples=<path> )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # --[no-]overwrite )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # --description )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # --org )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # --project-name )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # -i, --ios-language )   shift
+        #                         interactive="$1"
+        #                         ;;
+        # -a, --android-language )   shift
+        #                         interactive="$1"
+        #                         ;;
+
+        -h | --help)
+            usage
+            exit
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+        esac
+        shift
+    done
+fi
+
+if [ "$1" == "install" ]; then
+    FILE=$pwd/pubspec.yaml
+
+    if [ -f "$FILE" ]; then
+        rsync -avzh --progress "$lib" "$pwd"
+    else
+        echo "
+----------------------------------------------------------------
+
+This directory is not a Flutter Project!
+Please create a Flutter Project first and go to this directory!
+
+----------------------------------------------------------------"
+    fi
+fi
+
+create="flutter create ${platforms}"
+
+# echo $create

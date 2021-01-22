@@ -1,4 +1,4 @@
-import 'package:getx_pattern_form/app/utils/strings.dart';
+import '../../../app/utils/strings.dart';
 
 final Map<String, String> enUs = {
   'hi': 'Hello',

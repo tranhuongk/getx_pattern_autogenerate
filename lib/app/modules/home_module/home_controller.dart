@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_pattern_form/app/data/repository/home_repository.dart';
+import '../../../app/data/repository/home_repository.dart';
 
 class HomeController extends GetxController {
   final HomeRepository repository;

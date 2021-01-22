@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_pattern_form/app/modules/home_module/home_controller.dart';
-import 'package:getx_pattern_form/app/utils/strings.dart';
+import '../../../app/modules/home_module/home_controller.dart';
+import '../../../app/utils/strings.dart';
 
 class HomePage extends GetView<HomeController> {
   @override

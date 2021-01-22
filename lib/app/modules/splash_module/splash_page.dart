@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_pattern_form/app/routes/app_pages.dart';
+import '../../../app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class SplashPage extends GetView {

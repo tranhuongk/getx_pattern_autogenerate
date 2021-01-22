@@ -1,4 +1,4 @@
-import 'package:getx_pattern_form/app/data/provider/home_provider.dart';
+import '../../../app/data/provider/home_provider.dart';
 import 'package:meta/meta.dart';
 
 class HomeRepository {
