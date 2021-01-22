@@ -3,6 +3,8 @@
 pwd=$(pwd)
 BASEDIR=$(dirname "$0")
 lib=${BASEDIR%\/bin}/lib
+version="1.0.0"
+no_pub=0
 
 function usage() {
     echo "Usage: getx create <output directory>
@@ -74,19 +76,17 @@ Run \"getx install\" to install getx pattern in your project."
     exit 1
 }
 
-no_pub=0
-
 if [ "$1" == "create" ]; then
     while [ "$2" != "" ]; do
         case $2 in
-        --platforms)
-            shift
-            platforms="$2"
-            ;;
-        --no-pub)
-            shift
-            no_pub=1
-            ;;
+        # --platforms)
+        #     shift
+        #     platforms="$2"
+        #     ;;
+        # --no-pub)
+        #     shift
+        #     no_pub=1
+        #     ;;
         # --[no-]offline )   shift
         #                         interactive="$1"
         #                         ;;
@@ -134,14 +134,28 @@ if [ "$1" == "create" ]; then
     done
 fi
 
+while [ "$1" != "install" ] && [ "$1" != "create" ]; do
+    case $1 in
+    -v | --version | version)
+        echo "-----------------------------
+GetX Pattern Version: v$version
+-----------------------------"
+        exit
+        ;;
+    esac
+    shift
+done
+
 if [ "$1" == "install" ]; then
     FILE=$pwd/pubspec.yaml
-
     if [ -f "$FILE" ]; then
-        rsync -avzh --progress "$lib" "$pwd"
+        # cp -fr "$lib" "$pwd"
+        rsync -avzh "$lib" "$pwd"
+        sed -i -e "s/\(get:\).*/\ /" pubspec.yaml
+        sed -i -e "s/\(cupertino_icons:\)/\get: ^3.24.0\n  cupertino_icons:/" pubspec.yaml
+        flutter pub get
     else
-        echo "
-----------------------------------------------------------------
+        echo "----------------------------------------------------------------
 
 This directory is not a Flutter Project!
 Please create a Flutter Project first and go to this directory!
