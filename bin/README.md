@@ -26,7 +26,7 @@ Save and reset Terminal
 
 ## Use
 
-Go to the directory of flutter project and install getx with command:
+Go to the directory of flutter project and install getx pattern with command:
 ```
 getx install
 ```
