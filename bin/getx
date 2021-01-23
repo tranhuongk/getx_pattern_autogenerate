@@ -3,6 +3,7 @@
 pwd=$(pwd)
 BASEDIR=$(dirname "$0")
 lib=${BASEDIR%\/bin}/lib
+template=${BASEDIR%\/bin}/template
 version="1.0.0"
 no_pub=0
 
@@ -80,10 +81,30 @@ if [ "$1" == "install" ]; then
     FILE=$pwd/pubspec.yaml
     if [ -f "$FILE" ]; then
         # cp -fr "$lib" "$pwd"
-        rsync -avzh "$lib" "$pwd"
-        sed -i -e "s/\(get:\).*/\ /" pubspec.yaml
+        echo "Installing GetX Pattern..."
+        rsync -a "$lib" "$pwd"
+        sed -i -e "/\(get:\).*/d" pubspec.yaml
         sed -i -e "s/\(cupertino_icons:\)/\get: ^3.24.0\n  cupertino_icons:/" pubspec.yaml
+        rm -rf pubspec.yaml-e
+        echo "  lib/app/data/model/user.dart"
+        echo "  lib/app/data/provider/home_provider.dart"
+        echo "  lib/app/data/repository/home_repository.dart"
+        echo "  lib/app/modules/home_module/home_binding.dart"
+        echo "  lib/app/modules/home_module/home_controller.dart"
+        echo "  lib/app/modules/home_module/home_page.dart"
+        echo "  lib/app/modules/splash_module/splash_page.dart"
+        echo "  lib/app/routes/app_pages.dart"
+        echo "  lib/app/routes/app_routes.dart"
+        echo "  lib/app/theme/app_theme.dart"
+        echo "  lib/app/translations/en_US/en_us_translations.dart"
+        echo "  lib/app/translations/vi_VN/vi_vn_translation.dart"
+        echo "  lib/app/translations/app_translations.dart"
+        echo "  lib/app/utils/strings.dart"
+        echo "  lib/main.dart"
+
         flutter pub get
+
+        echo -e "Wrote 15 files.\n\nAll done!"
     else
         echo "----------------------------------------------------------------
 
@@ -153,17 +174,75 @@ else
         if [ "$1" == "upgrade" ] || [ "$1" == "update" ]; then
             git -C "${BASEDIR%\/bin}" pull
         else
-            while [ "$1" != "install" ] && [ "$1" != "create" ]; do
-                case $1 in
-                -v | --version | version)
-                    echo "-----------------------------
+            if [ "$1" == "add" ]; then
+                if [ "$2" == "" ]; then
+                    echo "getx add [The page name]"
+                else
+                    echo "Adding $2 form..."
+                    classname="$(tr '[:lower:]' '[:upper:]' <<<${2:0:1})${2:1}"
+
+                    # Provider
+                    cp "$template/app/data/provider/template_provider.dart" "$pwd/lib/app/data/provider/$2_provider.dart"
+                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/data/provider/$2_provider.dart"
+                    rm -rf "$pwd/lib/app/data/provider/$2_provider.dart-e"
+
+                    # Repository
+                    cp "$template/app/data/repository/template_repository.dart" "$pwd/lib/app/data/repository/$2_repository.dart"
+                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/data/repository/$2_repository.dart"
+                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/data/repository/$2_repository.dart"
+                    sed -i -e "s/\(template_provider\)/\\$2_provider/" "$pwd/lib/app/data/repository/$2_repository.dart"
+                    rm -rf "$pwd/lib/app/data/repository/$2_repository.dart-e"
+
+                    mkdir -p "$pwd/lib/app/modules/$2_module"
+                    mkdir -p "$pwd/lib/app/modules/$2_module/widgets"
+
+                    # Binding
+                    cp "$template/app/modules/template_module/template_binding.dart" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
+                    sed -i -e "s/\(TemplateBinding\)/\\${classname}Binding/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
+                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
+                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
+                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
+                    sed -i -e "s/\(template_provider\)/\\$2_provider/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
+                    sed -i -e "s/\(template_repository\)/\\$2_repository/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
+                    sed -i -e "s/\(template_module\/template_controller\)/\\$2_module\/$2_controller/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
+                    rm -rf "$pwd/lib/app/modules/$2_module/$2_binding.dart-e"
+
+                    # Controller
+                    cp "$template/app/modules/template_module/template_controller.dart" "$pwd/lib/app/modules/$2_module/$2_controller.dart"
+                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_controller.dart"
+                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/modules/$2_module/$2_controller.dart"
+                    sed -i -e "s/\(template_repository\)/\\$2_repository/" "$pwd/lib/app/modules/$2_module/$2_controller.dart"
+                    rm -rf "$pwd/lib/app/modules/$2_module/$2_controller.dart-e"
+
+                    # Page
+                    cp "$template/app/modules/template_module/template_page.dart" "$pwd/lib/app/modules/$2_module/$2_page.dart"
+                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
+                    sed -i -e "s/\(TemplatePage\)/\\${classname}Page/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
+                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
+                    sed -i -e "s/\(_templateController\)/\\_$2Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
+                    sed -i -e "s/\(template_module\/template_controller\)/\\$2_module\/$2_controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
+                    rm -rf "$pwd/lib/app/modules/$2_module/$2_page.dart-e"
+
+                    echo -e "  lib/app/data/provider/$2_provider.dart"
+                    echo "  lib/app/data/repository/$2_repository.dart"
+                    echo "  lib/app/modules/$2_module/$2_binding.dart"
+                    echo "  lib/app/modules/$2_module/$2_controller.dart"
+                    echo "  lib/app/modules/$2_module/$2_page.dart"
+                    echo -e "Wrote 5 files.\n\nAll done!"
+                fi
+            else
+                while [ "$1" != "install" ] && [ "$1" != "create" ]; do
+                    case $1 in
+                    -v | --version | version)
+                        echo "-----------------------------
 GetX Pattern Version: v$version
 -----------------------------"
-                    exit
-                    ;;
-                esac
-                shift
-            done
+                        exit
+                        ;;
+                    esac
+                    shift
+                done
+            fi
         fi
     fi
 fi
