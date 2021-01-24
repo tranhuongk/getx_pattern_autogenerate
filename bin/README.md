@@ -1,5 +1,11 @@
 # Manual
 
+<div>
+<video controls preload width=100%>
+<source src="tutorial.mov" type="video/quicktime">
+</video>
+</div>
+
 ## Install (Not support Windows)
 
 ### Clone Github Repository
