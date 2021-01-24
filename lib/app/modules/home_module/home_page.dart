@@ -10,22 +10,20 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(title: Text(homeTitle.tr)),
       body: Container(
-        child: GetX<HomeController>(
-          builder: (_) => Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  disc.tr,
-                ),
-                Text(
-                  '${_homeController.counter}',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ],
-            ),
-          ),
-        ),
+        child: Obx(() => Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    disc.tr,
+                  ),
+                  Text(
+                    '${_homeController.counter}',
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
+            )),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

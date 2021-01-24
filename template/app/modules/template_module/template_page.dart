@@ -9,9 +9,7 @@ class TemplatePage extends GetView<TemplateController> {
     return Scaffold(
       appBar: AppBar(title: Text('Template'.tr)),
       body: Container(
-        child: GetX<TemplateController>(
-          builder: (_) => Text(_templateController.text),
-        ),
+        child: Obx(() => Text(_templateController.text)),
       ),
     );
   }
