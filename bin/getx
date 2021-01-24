@@ -180,6 +180,7 @@ else
                 else
                     echo "Adding $2 form..."
                     classname="$(tr '[:lower:]' '[:upper:]' <<<${2:0:1})${2:1}"
+                    routename=$(echo $2 | tr '[a-z]' '[A-Z]')
 
                     # Provider
                     cp "$template/app/data/provider/template_provider.dart" "$pwd/lib/app/data/provider/$2_provider.dart"
@@ -219,9 +220,20 @@ else
                     sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
                     sed -i -e "s/\(TemplatePage\)/\\${classname}Page/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
                     sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
-                    sed -i -e "s/\(_templateController\)/\\_$2Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
+                    sed -i -e "s/\(_templateController\)/\_$2Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
                     sed -i -e "s/\(template_module\/template_controller\)/\\$2_module\/$2_controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
                     rm -rf "$pwd/lib/app/modules/$2_module/$2_page.dart-e"
+
+                    # App Pages
+                    sed -i -e "s/\(]\)/\\tGetPage(\n\t\t\tname: Routes.${routename},\n\t\t\tpage: () => ${classname}Page(),\n\t\t),\n\t]/" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "/\(import '..\/..\/app\/modules\/$2_module\/$2_page.dart';\).*/d" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "s/\(part '.\/app_routes.dart';\)/\\import '..\/..\/app\/modules\/$2_module\/$2_page.dart';\npart '.\/app_routes.dart';/" "$pwd/lib/app/routes/app_pages.dart"
+                    rm -rf "$pwd/lib/app/routes/app_pages.dart-e"
+
+                    # App Routes
+                    sed -i -e "/\($routename\).*/d" "$pwd/lib/app/routes/app_routes.dart"
+                    sed -i -e "s/\(}\)/\\  static const $routename = '\/$2'; \/\/ $classname Page\n}/" "$pwd/lib/app/routes/app_routes.dart"
+                    rm -rf "$pwd/lib/app/routes/app_routes.dart-e"
 
                     echo -e "  lib/app/data/provider/$2_provider.dart"
                     echo "  lib/app/data/repository/$2_repository.dart"
