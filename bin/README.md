@@ -1,6 +1,6 @@
 # Manual
 
-[![Watch the video](https://kauemurakami.github.io/getx_pattern/images/strc.png)](https://www.youtube.com/embed/ItNzy9AbJ9E)
+[![Watch the video](https://i.ytimg.com/vi/ItNzy9AbJ9E/maxresdefault.jpg)](https://www.youtube.com/embed/ItNzy9AbJ9E)
 
 ## Install (Not support Windows)
 
