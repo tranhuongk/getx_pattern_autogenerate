@@ -215,21 +215,24 @@ else
                     sed -i -e "s/\(TemplateController\)/${classname}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
                     sed -i -e "s/\(TemplateRepository\)/${classname}Repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
                     sed -i -e "s/\(template_repository\)/${lowername}_repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    sed -i -e "s/\('Template'.obs\)/\'$classname'.obs/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
                     rm -rf "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart-e"
 
-                    # Page
+                    # Template Page
                     cp "$template/app/modules/template_module/template_page.dart" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     sed -i -e "s/\(TemplateController\)/${classname}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     sed -i -e "s/\(TemplatePage\)/${classname}Page/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     sed -i -e "s/\(TemplateController\)/${classname}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     sed -i -e "s/\(_templateController\)/\_${variablename}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
+                    sed -i -e "s/\('Template'.tr\)/\'$classname'.tr/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     sed -i -e "s/\(template_module\/template_controller\)/${lowername}_module\/${lowername}_controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     rm -rf "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart-e"
 
                     # App Pages
-                    sed -i -e "s/\(]\)/\tGetPage(\n\t\t\tname: Routes.${routename},\n\t\t\tpage: () => ${classname}Page(),\n\t\t),\n\t]/" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "s/\(]\)/\tGetPage(\n\t\t\tname: Routes.${routename},\n\t\t\tpage: () => ${classname}Page(),\n\t\t\tbinding: ${classname}Binding(),\n\t\t),\n\t]/" "$pwd/lib/app/routes/app_pages.dart"
                     sed -i -e "/\(import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_page.dart';\).*/d" "$pwd/lib/app/routes/app_pages.dart"
-                    sed -i -e "s/\(part '.\/app_routes.dart';\)/import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_page.dart';\npart '.\/app_routes.dart';/" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "/\(import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_binding.dart';\).*/d" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "s/\(part '.\/app_routes.dart';\)/import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_page.dart';\nimport '..\/..\/app\/modules\/${lowername}_module\/${lowername}_binding.dart';\npart '.\/app_routes.dart';/" "$pwd/lib/app/routes/app_pages.dart"
                     rm -rf "$pwd/lib/app/routes/app_pages.dart-e"
 
                     # App Routes

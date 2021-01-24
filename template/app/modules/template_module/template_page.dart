@@ -7,10 +7,10 @@ class TemplatePage extends GetView<TemplateController> {
   Widget build(BuildContext context) {
     TemplateController _templateController = Get.find<TemplateController>();
     return Scaffold(
-      appBar: AppBar(title: Text("Template".tr)),
+      appBar: AppBar(title: Text('Template'.tr)),
       body: Container(
         child: GetX<TemplateController>(
-          builder: (_) => FlutterLogo(),
+          builder: (_) => Text(_templateController.text),
         ),
       ),
     );

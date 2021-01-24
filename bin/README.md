@@ -28,7 +28,12 @@ Save and reset Terminal
 
 Go to the directory of flutter project and install getx pattern with command:
 ```
-getx install
+get install
+```
+
+Add Page with name InGame:
+```
+get add InGame
 ```
 
 ## __*That's all! Good luck!*__
