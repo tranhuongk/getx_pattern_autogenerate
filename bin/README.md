@@ -1,6 +1,6 @@
 # Manual
 
-<iframe width="1134" height="638" src="https://www.youtube.com/embed/ItNzy9AbJ9E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Watch the video](https://kauemurakami.github.io/getx_pattern/images/strc.png)](https://www.youtube.com/embed/ItNzy9AbJ9E)
 
 ## Install (Not support Windows)
 
