@@ -1,10 +1,6 @@
 # Manual
 
-<div>
-<video controls preload width=100%>
-<source src="tutorial.mov" type="video/quicktime">
-</video>
-</div>
+!video[ Tutorial ]( tutorial.mov ){ size=1000 }
 
 ## Install (Not support Windows)
 
