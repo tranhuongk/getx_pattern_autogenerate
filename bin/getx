@@ -179,67 +179,68 @@ else
                     echo "getx add [The page name]"
                 else
                     echo "Adding $2 form..."
-                    classname="$(tr '[:lower:]' '[:upper:]' <<<${2:0:1})${2:1}"
-                    routename=$(echo $2 | tr '[a-z]' '[A-Z]')
-
+                    lowername=$(echo $2 | tr '[A-Z]' '[a-z]')
+                    classname="$(tr '[:lower:]' '[:upper:]' <<<${lowername:0:1})${lowername:1}"
+                    routename=$(echo $lowername | tr '[a-z]' '[A-Z]')
+                    
                     # Provider
-                    cp "$template/app/data/provider/template_provider.dart" "$pwd/lib/app/data/provider/$2_provider.dart"
-                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/data/provider/$2_provider.dart"
-                    rm -rf "$pwd/lib/app/data/provider/$2_provider.dart-e"
+                    cp "$template/app/data/provider/template_provider.dart" "$pwd/lib/app/data/provider/${lowername}_provider.dart"
+                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/data/provider/${lowername}_provider.dart"
+                    rm -rf "$pwd/lib/app/data/provider/${lowername}_provider.dart-e"
 
                     # Repository
-                    cp "$template/app/data/repository/template_repository.dart" "$pwd/lib/app/data/repository/$2_repository.dart"
-                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/data/repository/$2_repository.dart"
-                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/data/repository/$2_repository.dart"
-                    sed -i -e "s/\(template_provider\)/\\$2_provider/" "$pwd/lib/app/data/repository/$2_repository.dart"
-                    rm -rf "$pwd/lib/app/data/repository/$2_repository.dart-e"
+                    cp "$template/app/data/repository/template_repository.dart" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    sed -i -e "s/\(template_provider\)/\\${lowername}_provider/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    rm -rf "$pwd/lib/app/data/repository/${lowername}_repository.dart-e"
 
-                    mkdir -p "$pwd/lib/app/modules/$2_module"
-                    mkdir -p "$pwd/lib/app/modules/$2_module/widgets"
+                    mkdir -p "$pwd/lib/app/modules/${lowername}_module"
+                    mkdir -p "$pwd/lib/app/modules/${lowername}_module/widgets"
 
                     # Binding
-                    cp "$template/app/modules/template_module/template_binding.dart" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
-                    sed -i -e "s/\(TemplateBinding\)/\\${classname}Binding/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
-                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
-                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
-                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
-                    sed -i -e "s/\(template_provider\)/\\$2_provider/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
-                    sed -i -e "s/\(template_repository\)/\\$2_repository/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
-                    sed -i -e "s/\(template_module\/template_controller\)/\\$2_module\/$2_controller/" "$pwd/lib/app/modules/$2_module/$2_binding.dart"
-                    rm -rf "$pwd/lib/app/modules/$2_module/$2_binding.dart-e"
+                    cp "$template/app/modules/template_module/template_binding.dart" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    sed -i -e "s/\(TemplateBinding\)/\\${classname}Binding/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    sed -i -e "s/\(TemplateProvider\)/\\${classname}Provider/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    sed -i -e "s/\(template_provider\)/\\${lowername}_provider/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    sed -i -e "s/\(template_repository\)/\\${lowername}_repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    sed -i -e "s/\(template_module\/template_controller\)/\\${lowername}_module\/${lowername}_controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    rm -rf "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart-e"
 
                     # Controller
-                    cp "$template/app/modules/template_module/template_controller.dart" "$pwd/lib/app/modules/$2_module/$2_controller.dart"
-                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_controller.dart"
-                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/modules/$2_module/$2_controller.dart"
-                    sed -i -e "s/\(template_repository\)/\\$2_repository/" "$pwd/lib/app/modules/$2_module/$2_controller.dart"
-                    rm -rf "$pwd/lib/app/modules/$2_module/$2_controller.dart-e"
+                    cp "$template/app/modules/template_module/template_controller.dart" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    sed -i -e "s/\(TemplateRepository\)/\\${classname}Repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    sed -i -e "s/\(template_repository\)/\\${lowername}_repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    rm -rf "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart-e"
 
                     # Page
-                    cp "$template/app/modules/template_module/template_page.dart" "$pwd/lib/app/modules/$2_module/$2_page.dart"
-                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
-                    sed -i -e "s/\(TemplatePage\)/\\${classname}Page/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
-                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
-                    sed -i -e "s/\(_templateController\)/\_$2Controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
-                    sed -i -e "s/\(template_module\/template_controller\)/\\$2_module\/$2_controller/" "$pwd/lib/app/modules/$2_module/$2_page.dart"
-                    rm -rf "$pwd/lib/app/modules/$2_module/$2_page.dart-e"
+                    cp "$template/app/modules/template_module/template_page.dart" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
+                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
+                    sed -i -e "s/\(TemplatePage\)/\\${classname}Page/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
+                    sed -i -e "s/\(TemplateController\)/\\${classname}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
+                    sed -i -e "s/\(_templateController\)/\_${lowername}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
+                    sed -i -e "s/\(template_module\/template_controller\)/\\${lowername}_module\/${lowername}_controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
+                    rm -rf "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart-e"
 
                     # App Pages
                     sed -i -e "s/\(]\)/\\tGetPage(\n\t\t\tname: Routes.${routename},\n\t\t\tpage: () => ${classname}Page(),\n\t\t),\n\t]/" "$pwd/lib/app/routes/app_pages.dart"
-                    sed -i -e "/\(import '..\/..\/app\/modules\/$2_module\/$2_page.dart';\).*/d" "$pwd/lib/app/routes/app_pages.dart"
-                    sed -i -e "s/\(part '.\/app_routes.dart';\)/\\import '..\/..\/app\/modules\/$2_module\/$2_page.dart';\npart '.\/app_routes.dart';/" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "/\(import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_page.dart';\).*/d" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "s/\(part '.\/app_routes.dart';\)/\\import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_page.dart';\npart '.\/app_routes.dart';/" "$pwd/lib/app/routes/app_pages.dart"
                     rm -rf "$pwd/lib/app/routes/app_pages.dart-e"
 
                     # App Routes
                     sed -i -e "/\($routename\).*/d" "$pwd/lib/app/routes/app_routes.dart"
-                    sed -i -e "s/\(}\)/\\  static const $routename = '\/$2'; \/\/ $classname Page\n}/" "$pwd/lib/app/routes/app_routes.dart"
+                    sed -i -e "s/\(}\)/\\  static const $routename = '\/${lowername}'; \/\/ $classname Page\n}/" "$pwd/lib/app/routes/app_routes.dart"
                     rm -rf "$pwd/lib/app/routes/app_routes.dart-e"
 
-                    echo -e "  lib/app/data/provider/$2_provider.dart"
-                    echo "  lib/app/data/repository/$2_repository.dart"
-                    echo "  lib/app/modules/$2_module/$2_binding.dart"
-                    echo "  lib/app/modules/$2_module/$2_controller.dart"
-                    echo "  lib/app/modules/$2_module/$2_page.dart"
+                    echo -e "  lib/app/data/provider/${lowername}_provider.dart"
+                    echo "  lib/app/data/repository/${lowername}_repository.dart"
+                    echo "  lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    echo "  lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    echo "  lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     echo -e "Wrote 5 files.\n\nAll done!"
                 fi
             else
