@@ -1,6 +1,6 @@
 # Manual
 
-!video[ Tutorial ]( tutorial.mov ){ size=1000 }
+<iframe width="1134" height="638" src="https://www.youtube.com/embed/ItNzy9AbJ9E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Install (Not support Windows)
 
