@@ -6,7 +6,7 @@
 
 ### Clone Github Repository
 ```
-git clone https://github.com/tranhuongk/getx_pattern_form.git [Directory]
+git clone https://github.com/tranhuongk/getx_pattern_autogenerate.git [Directory]
 ```
 ### Set Path
 Open `/etc/paths` with administrator
@@ -14,7 +14,7 @@ Open `/etc/paths` with administrator
 sudo nano /etc/paths
 ```
 ### Add Path to getx
-Add PATH `getx_pattern_form/bin` to `etc/paths` like that:
+Add PATH `getx_pattern_autogenerate/bin` to `etc/paths` like that:
 ```
 /usr/local/bin
 /usr/bin
@@ -22,7 +22,7 @@ Add PATH `getx_pattern_form/bin` to `etc/paths` like that:
 /usr/sbin
 /sbin
 /Volumes/macOS Data/flutter/bin
-/Volumes/macOS Data/Projects/getx_pattern_form/bin
+/Volumes/macOS Data/Projects/getx_pattern_autogenerate/bin
 ```
 Save and reset Terminal
 
