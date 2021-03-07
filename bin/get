@@ -84,7 +84,7 @@ if [ "$1" == "install" ]; then
         echo "Installing GetX Pattern..."
         rsync -a "$lib" "$pwd"
         sed -i -e "/\(get:\).*/d" pubspec.yaml
-        sed -i -e "s/\(cupertino_icons:\)/\get: ^3.24.0\n  cupertino_icons:/" pubspec.yaml
+        sed -i -e "s/\(cupertino_icons:\)/\get: ^3.26.0\n  cupertino_icons:/" pubspec.yaml
         rm -rf pubspec.yaml-e
         echo "  lib/app/data/model/user.dart"
         echo "  lib/app/data/provider/home_provider.dart"
