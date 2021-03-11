@@ -5,11 +5,10 @@ import '../../../app/modules/template_module/template_controller.dart';
 class TemplatePage extends GetView<TemplateController> {
   @override
   Widget build(BuildContext context) {
-    TemplateController _templateController = Get.find<TemplateController>();
     return Scaffold(
       appBar: AppBar(title: Text('Template'.tr)),
       body: Container(
-        child: Obx(() => Text(_templateController.text)),
+        child: Obx(() => Text(controller.text)),
       ),
     );
   }

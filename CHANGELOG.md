@@ -1,0 +1,2 @@
+Replace _templateController to controller
+update add item to templte_name_module

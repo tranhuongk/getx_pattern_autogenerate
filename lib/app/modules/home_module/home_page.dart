@@ -6,7 +6,6 @@ import '../../../app/utils/strings.dart';
 class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    HomeController _homeController = Get.find<HomeController>();
     return Scaffold(
       appBar: AppBar(title: Text(homeTitle.tr)),
       body: Container(
@@ -18,7 +17,7 @@ class HomePage extends GetView<HomeController> {
                     disc.tr,
                   ),
                   Text(
-                    '${_homeController.counter}',
+                    '${controller.counter}',
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ],
@@ -27,7 +26,7 @@ class HomePage extends GetView<HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _homeController.increase();
+          controller.increase();
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
