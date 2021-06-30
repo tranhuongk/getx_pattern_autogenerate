@@ -1,8 +1,12 @@
 import 'app_colors.dart';
 import 'package:flutter/material.dart';
 
-final TextStyle cardTextStyle = TextStyle(
-  color: exampleColor,
-  fontSize: 16,
-  fontWeight: FontWeight.bold,
-);
+class AppTextStyles {
+  AppTextStyles._();
+  
+  static const TextStyle bold16White = TextStyle(
+    fontWeight: FontWeight.bold,
+    color: AppColors.white,
+    fontSize: 16,
+  );
+}

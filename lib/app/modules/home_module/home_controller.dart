@@ -1,18 +1,16 @@
 import 'package:get/get.dart';
-import '../../../app/data/repository/home_repository.dart';
+import 'package:getx_pattern_form/app/data/provider/home_provider.dart';
 
 class HomeController extends GetxController {
-  final HomeRepository repository;
-  HomeController({this.repository});
+  HomeController({this.provider});
+  final HomeProvider provider;
 
-  final _counter = 0.obs;
-  set counter(value) => this._counter.value = value;
-  get counter => this._counter.value;
+  final RxInt counter = 0.obs;
   void increase() {
-    this._counter.value += 1;
+    this.counter.value += 1;
   }
 
   void decrease() {
-    this._counter.value -= 1;
+    this.counter.value -= 1;
   }
 }

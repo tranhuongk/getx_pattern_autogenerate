@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import '../../../app/routes/app_pages.dart';
 import 'package:get/get.dart';
+import 'package:getx_pattern_form/app/routes/app_pages.dart';
+import 'package:getx_pattern_form/app/utils/widgets/custom_app_bar.dart';
 
 class SplashPage extends GetView {
   @override
   Widget build(BuildContext context) {
     ///Your Function in the Future
-    Future.delayed(Duration(seconds: 5), () {
-      // 5s over, navigate to a new page
-      Get.offNamed(Routes.HOME);
+    Future.delayed(Duration(seconds: 2), () {
+      // 2s over, navigate to a new page
+      Get.offNamed(AppRoutes.HOME);
     });
 
     ///Your widget
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        brightness: Get.isDarkMode ? Brightness.dark : Brightness.light,
-      ),
+      appBar: CustomAppBar(),
       body: Stack(
         children: [
           Container(

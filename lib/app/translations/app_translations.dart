@@ -1,9 +1,14 @@
-import '../../app/translations/en_US/en_us_translations.dart';
-import '../../app/translations/vi_VN/vi_vn_translation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_pattern_form/app/translations/en_US.dart';
+import 'package:getx_pattern_form/app/translations/vi_VN.dart';
 
-abstract class AppTranslation {
-  static Map<String, Map<String, String>> translations = {
-    'en': enUs,
-    'vi': viVn,
+class AppTranslation {
+  AppTranslation._();
+
+  static final Locale locale = Get.deviceLocale;
+  static final Map<String, Map<String, String>> translations = {
+    'en': en_US,
+    'vi': vi_VN,
   };
 }

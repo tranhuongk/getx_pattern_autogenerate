@@ -1,8 +1,9 @@
 part of './app_pages.dart';
 
-abstract class Routes {
+class AppRoutes {
+  AppRoutes._();
   static const INITIAL = '/';
   static const HOME = '/home'; // Home page
   static const LOGIN = '/login'; // Login page
-  static const CADASTRO = '/register'; // Register page
+  static const REGISTER = '/register'; // Register page
 }

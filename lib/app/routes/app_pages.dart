@@ -1,18 +1,19 @@
 import 'package:get/get.dart';
-import '../../app/modules/home_module/home_binding.dart';
-import '../../app/modules/home_module/home_page.dart';
-import '../../app/modules/splash_module/splash_page.dart';
+import 'package:getx_pattern_form/app/modules/home_module/home_binding.dart';
+import 'package:getx_pattern_form/app/modules/home_module/home_page.dart';
+import 'package:getx_pattern_form/app/modules/splash_module/splash_page.dart';
 part './app_routes.dart';
 
-abstract class AppPages {
+class AppPages {
+  AppPages._();
   static final pages = [
     GetPage(
-      name: Routes.HOME,
+      name: AppRoutes.HOME,
       page: () => HomePage(),
       binding: HomeBinding(),
     ),
     GetPage(
-      name: Routes.INITIAL,
+      name: AppRoutes.INITIAL,
       page: () => SplashPage(),
     ),
   ];

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../app/modules/home_module/home_controller.dart';
-import '../../../app/utils/strings.dart';
+import 'package:getx_pattern_form/app/modules/home_module/home_controller.dart';
+import 'package:getx_pattern_form/app/utils/common.dart';
+import 'package:getx_pattern_form/app/utils/strings.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(homeTitle.tr)),
+      appBar: AppBar(title: Text(AppStrings.homeTitle.tr)),
       body: Container(
         child: Obx(() => Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    disc.tr,
+                    AppStrings.disc.tr,
                   ),
                   Text(
                     '${controller.counter}',
@@ -27,6 +28,7 @@ class HomePage extends GetView<HomeController> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           controller.increase();
+          Common.showLoading();
         },
         tooltip: 'Increment',
         child: Icon(Icons.add),
