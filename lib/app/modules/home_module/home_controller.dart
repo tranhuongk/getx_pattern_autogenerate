@@ -6,7 +6,8 @@ class HomeController extends GetxController {
   final HomeProvider provider;
 
   final RxInt counter = 0.obs;
-  void increase() {
+  void increase() async {
+    Response res = await provider.getUser();
     this.counter.value += 1;
   }
 

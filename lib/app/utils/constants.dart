@@ -1,11 +1,13 @@
 class Constants {
   const Constants._();
 
-  static const String baseUrl = 'http://youapi';
+  static const String baseUrl = 'https://yourapi/';
   static const String login = "auth/login";
-  static const String token = 'authToken';
+  static const String user = "userdata";
 
-  static const timeout = Duration(seconds: 30);
+  static const Duration timeout = Duration(seconds: 30);
+
+  static const String TOKEN = 'authToken';
 }
 
-enum LoadDataState { initialize, loading, loaded, error, timeout }
+enum LoadDataState { initialize, loading, loaded, error, timeout, unknownerror }

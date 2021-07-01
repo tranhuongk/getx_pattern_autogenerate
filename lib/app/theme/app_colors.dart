@@ -38,4 +38,7 @@ class AppColors {
   static const Color doveGray = Color(0xFF646464);
   static const Color caribbeanGreen = Color(0xFF06C5AC);
   static const Color amaranth = Color(0xFFea435d);
+
+  static const List<Color> redAccent2greenLight = [redAccent, greenLight];
+  static const List<Color> greenLight2redAccent = [greenLight, redAccent];
 }

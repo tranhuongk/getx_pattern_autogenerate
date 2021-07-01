@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_pattern_form/app/modules/home_module/home_controller.dart';
 import 'package:getx_pattern_form/app/utils/common.dart';
-import 'package:getx_pattern_form/app/utils/strings.dart';
+import 'package:getx_pattern_form/app/utils/app_strings.dart';
 
 class HomePage extends GetView<HomeController> {
   @override

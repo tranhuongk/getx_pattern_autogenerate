@@ -1,4 +1,4 @@
-import 'package:getx_pattern_form/app/utils/strings.dart';
+import 'package:getx_pattern_form/app/utils/app_strings.dart';
 
 const Map<String, String> en_US = {
   'hi': 'Hello',
