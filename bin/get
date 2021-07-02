@@ -4,7 +4,7 @@ pwd=$(pwd)
 BASEDIR=$(dirname "$0")
 lib=${BASEDIR%\/bin}/lib
 template=${BASEDIR%\/bin}/template
-version="1.0.0"
+version="2.0.0"
 no_pub=0
 
 function usage() {
@@ -83,28 +83,105 @@ if [ "$1" == "install" ]; then
         # cp -fr "$lib" "$pwd"
         echo "Installing GetX Pattern..."
         rsync -a "$lib" "$pwd"
+        package_name=$(sed -nr '/name: / s/.*name: ([^"]+).*/\1/p' pubspec.yaml)
+
         sed -i -e "/\(get:\).*/d" pubspec.yaml
-        sed -i -e "s/\(cupertino_icons:\)/\get: ^3.26.0\n  cupertino_icons:/" pubspec.yaml
+        sed -i -e "/\(flutter_spinkit:\).*/d" pubspec.yaml
+        sed -i -e "s/\(cupertino_icons:\)/\get: ^4.1.4\n  flutter_spinkit: ^5.0.0\n  cupertino_icons:/" pubspec.yaml
+
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/api/api_connect.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/api/api_error.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/request/request.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/response/response.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/user.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/provider/home_provider.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/modules/home_module/home_binding.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/modules/home_module/home_controller.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/modules/home_module/home_page.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/modules/splash_module/splash_page.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/routes/app_pages.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/routes/app_routes.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/theme/app_colors.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/theme/app_text_theme.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/theme/app_theme.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/translations/app_translations.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/translations/en_US.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/translations/vi_VN.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/custom_app_bar.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/gradient_fa_icon.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/gradient_text.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/widget.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/app_strings.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/common.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/constants.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/extensions.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/loading.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/main.dart
+
+        rm -rf lib/app/data/model/api/api_connect.dart-e
+        rm -rf lib/app/data/model/api/api_error.dart-e
+        rm -rf lib/app/data/model/request/request.dart-e
+        rm -rf lib/app/data/model/response/response.dart-e
+        rm -rf lib/app/data/model/user.dart-e
+        rm -rf lib/app/data/provider/home_provider.dart-e
+        rm -rf lib/app/modules/home_module/home_binding.dart-e
+        rm -rf lib/app/modules/home_module/home_controller.dart-e
+        rm -rf lib/app/modules/home_module/home_page.dart-e
+        rm -rf lib/app/modules/splash_module/splash_page.dart-e
+        rm -rf lib/app/routes/app_pages.dart-e
+        rm -rf lib/app/routes/app_routes.dart-e
+        rm -rf lib/app/theme/app_colors.dart-e
+        rm -rf lib/app/theme/app_text_theme.dart-e
+        rm -rf lib/app/theme/app_theme.dart-e
+        rm -rf lib/app/translations/app_translations.dart-e
+        rm -rf lib/app/translations/en_US.dart-e
+        rm -rf lib/app/translations/vi_VN.dart-e
+        rm -rf lib/app/utils/widgets/custom_app_bar.dart-e
+        rm -rf lib/app/utils/widgets/gradient_fa_icon.dart-e
+        rm -rf lib/app/utils/widgets/gradient_text.dart-e
+        rm -rf lib/app/utils/widgets/widget.dart-e
+        rm -rf lib/app/utils/app_strings.dart-e
+        rm -rf lib/app/utils/common.dart-e
+        rm -rf lib/app/utils/constants.dart-e
+        rm -rf lib/app/utils/extensions.dart-e
+        rm -rf lib/app/utils/loading.dart-e
+        rm -rf lib/main.dart-e
+
         rm -rf pubspec.yaml-e
+
+        echo "  lib/app/data/model/api/api_connect.dart"
+        echo "  lib/app/data/model/api/api_error.dart"
+        echo "  lib/app/data/model/request/request.dart"
+        echo "  lib/app/data/model/response/response.dart"
         echo "  lib/app/data/model/user.dart"
         echo "  lib/app/data/provider/home_provider.dart"
-        echo "  lib/app/data/repository/home_repository.dart"
         echo "  lib/app/modules/home_module/home_binding.dart"
         echo "  lib/app/modules/home_module/home_controller.dart"
         echo "  lib/app/modules/home_module/home_page.dart"
         echo "  lib/app/modules/splash_module/splash_page.dart"
         echo "  lib/app/routes/app_pages.dart"
         echo "  lib/app/routes/app_routes.dart"
+        echo "  lib/app/theme/app_colors.dart"
+        echo "  lib/app/theme/app_text_theme.dart"
         echo "  lib/app/theme/app_theme.dart"
-        echo "  lib/app/translations/en_US/en_us_translations.dart"
-        echo "  lib/app/translations/vi_VN/vi_vn_translation.dart"
         echo "  lib/app/translations/app_translations.dart"
-        echo "  lib/app/utils/strings.dart"
+        echo "  lib/app/translations/en_US.dart"
+        echo "  lib/app/translations/vi_VN.dart"
+        echo "  lib/app/utils/widgets/custom_app_bar.dart"
+        echo "  lib/app/utils/widgets/gradient_fa_icon.dart"
+        echo "  lib/app/utils/widgets/gradient_text.dart"
+        echo "  lib/app/utils/widgets/widget.dart"
+        echo "  lib/app/utils/app_strings.dart"
+        echo "  lib/app/utils/common.dart"
+        echo "  lib/app/utils/constants.dart"
+        echo "  lib/app/utils/extensions.dart"
+        echo "  lib/app/utils/loading.dart"
         echo "  lib/main.dart"
 
+        dart pub upgrade --major-versions
         flutter pub get
 
-        echo -e "Wrote 15 files.\n\nAll done!"
+        echo -e "Wrote 28 files.\n\nAll done!"
     else
         echo "----------------------------------------------------------------
 
@@ -176,11 +253,12 @@ else
         else
             if [ "$1" == "add" ]; then
                 if [ "$2" == "" ]; then
-                    echo "getx add [The page name]"
+                    echo "getx add [the_page_name]"
                 else
                     echo "Adding $2 form..."
+                    package_name=$(sed -nr '/name: / s/.*name: ([^"]+).*/\1/p' pubspec.yaml)
                     lowername=$(echo $2 | tr '[A-Z]' '[a-z]')
-                    classname=$(awk -F _ '{printf "%s", $1; for(i=2; i<=NF; i++) printf "%s", toupper(substr($i,1,1)) substr($i, 2); print"";}' <<< "$2")
+                    classname=$(awk -F _ '{printf "%s", $1; for(i=2; i<=NF; i++) printf "%s", toupper(substr($i,1,1)) substr($i, 2); print"";}' <<<"$2")
                     classname="$(tr '[:lower:]' '[:upper:]' <<<${classname:0:1})${classname:1}"
                     # variablename="$(tr '[:upper:]' '[:lower:]' <<<${2:0:1})${2:1}"
                     routename=$(echo $2 | tr '[a-z]' '[A-Z]')
@@ -188,14 +266,16 @@ else
                     # Provider
                     cp "$template/app/data/provider/template_provider.dart" "$pwd/lib/app/data/provider/${lowername}_provider.dart"
                     sed -i -e "s/\(TemplateProvider\)/${classname}Provider/" "$pwd/lib/app/data/provider/${lowername}_provider.dart"
+                    sed -i -e "s/getx_pattern_form/$package_name/" "$pwd/lib/app/data/provider/${lowername}_provider.dart"
                     rm -rf "$pwd/lib/app/data/provider/${lowername}_provider.dart-e"
 
                     # Repository
-                    cp "$template/app/data/repository/template_repository.dart" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
-                    sed -i -e "s/\(TemplateProvider\)/${classname}Provider/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
-                    sed -i -e "s/\(TemplateRepository\)/${classname}Repository/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
-                    sed -i -e "s/\(template_provider\)/${lowername}_provider/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
-                    rm -rf "$pwd/lib/app/data/repository/${lowername}_repository.dart-e"
+                    # cp "$template/app/data/repository/template_repository.dart" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    # sed -i -e "s/\(TemplateProvider\)/${classname}Provider/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    # sed -i -e "s/\(TemplateRepository\)/${classname}Repository/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    # sed -i -e "s/\(template_provider\)/${lowername}_provider/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    # sed -i -e "s/..\/..\/..\//$package_name/" "$pwd/lib/app/data/repository/${lowername}_repository.dart"
+                    # rm -rf "$pwd/lib/app/data/repository/${lowername}_repository.dart-e"
 
                     mkdir -p "$pwd/lib/app/modules/${lowername}_module"
                     mkdir -p "$pwd/lib/app/modules/${lowername}_module/widgets"
@@ -209,14 +289,16 @@ else
                     sed -i -e "s/\(template_provider\)/${lowername}_provider/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
                     sed -i -e "s/\(template_repository\)/${lowername}_repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
                     sed -i -e "s/\(template_module\/template_controller\)/${lowername}_module\/${lowername}_controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
+                    sed -i -e "s/..\/..\/..\//package:$package_name\//" "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart"
                     rm -rf "$pwd/lib/app/modules/${lowername}_module/${lowername}_binding.dart-e"
 
                     # Controller
                     cp "$template/app/modules/template_module/template_controller.dart" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
                     sed -i -e "s/\(TemplateController\)/${classname}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
-                    sed -i -e "s/\(TemplateRepository\)/${classname}Repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
-                    sed -i -e "s/\(template_repository\)/${lowername}_repository/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    sed -i -e "s/\(TemplateProvider\)/${classname}Provider/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    sed -i -e "s/\(template_provider\)/${lowername}_provider/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
                     sed -i -e "s/\('Template'.obs\)/\'$classname'.obs/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
+                    sed -i -e "s/..\/..\/..\//package:$package_name\//" "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart"
                     rm -rf "$pwd/lib/app/modules/${lowername}_module/${lowername}_controller.dart-e"
 
                     # Template Page
@@ -227,18 +309,21 @@ else
                     # sed -i -e "s/\(_templateController\)/\_${variablename}Controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     sed -i -e "s/\('Template'.tr\)/\'$classname'.tr/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     sed -i -e "s/\(template_module\/template_controller\)/${lowername}_module\/${lowername}_controller/" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
+                    sed -i -e "s/..\/..\/..\//package:$package_name\//" "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart"
                     rm -rf "$pwd/lib/app/modules/${lowername}_module/${lowername}_page.dart-e"
 
                     # App Pages
-                    sed -i -e "s/\(]\)/\tGetPage(\n\t\t\tname: Routes.${routename},\n\t\t\tpage: () => ${classname}Page(),\n\t\t\tbinding: ${classname}Binding(),\n\t\t),\n\t]/" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "s/\(]\)/\tGetPage(\n\t\t\tname: AppRoutes.${routename},\n\t\t\tpage: () => ${classname}Page(),\n\t\t\tbinding: ${classname}Binding(),\n\t\t),\n\t]/" "$pwd/lib/app/routes/app_pages.dart"
                     sed -i -e "/\(import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_page.dart';\).*/d" "$pwd/lib/app/routes/app_pages.dart"
                     sed -i -e "/\(import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_binding.dart';\).*/d" "$pwd/lib/app/routes/app_pages.dart"
                     sed -i -e "s/\(part '.\/app_routes.dart';\)/import '..\/..\/app\/modules\/${lowername}_module\/${lowername}_page.dart';\nimport '..\/..\/app\/modules\/${lowername}_module\/${lowername}_binding.dart';\npart '.\/app_routes.dart';/" "$pwd/lib/app/routes/app_pages.dart"
+                    sed -i -e "s/..\/..\//package:$package_name\//" "$pwd/lib/app/routes/app_pages.dart"
                     rm -rf "$pwd/lib/app/routes/app_pages.dart-e"
 
                     # App Routes
                     sed -i -e "/\($routename\).*/d" "$pwd/lib/app/routes/app_routes.dart"
                     sed -i -e "s/\(}\)/  static const $routename = '\/${lowername}'; \/\/ $classname Page\n}/" "$pwd/lib/app/routes/app_routes.dart"
+                    sed -i -e "s/..\/..\//package:$package_name\//" "$pwd/lib/app/routes/app_routes.dart"
                     rm -rf "$pwd/lib/app/routes/app_routes.dart-e"
 
                     echo -e "  lib/app/data/provider/${lowername}_provider.dart"

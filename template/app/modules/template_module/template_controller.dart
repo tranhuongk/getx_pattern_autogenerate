@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import '../../data/repository/template_repository.dart';
+import '../../../app/data/provider/template_provider.dart';
 
 class TemplateController extends GetxController {
-  final TemplateRepository repository;
-  TemplateController({this.repository});
+  final TemplateProvider provider;
+  TemplateController({this.provider});
 
   final _text = 'Template'.obs;
   set text(text) => this._text.value = text;

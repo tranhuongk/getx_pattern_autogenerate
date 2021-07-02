@@ -121,7 +121,7 @@ class ApiConnect extends GetConnect {
 }
 
 extension ResErr<T> on Response<T> {
-  T getRes() {
+  T body() {
     final status = this.status;
 
     if (status.connectionError) {

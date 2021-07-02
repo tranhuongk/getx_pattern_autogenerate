@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:getx_pattern_form/app/routes/app_pages.dart';
+import 'package:getx_pattern_form/app/theme/app_theme.dart';
+import 'package:getx_pattern_form/app/translations/app_translations.dart';
 import 'package:getx_pattern_form/app/utils/common.dart';
 import 'package:getx_pattern_form/app/utils/extensions.dart';
-import 'app/routes/app_pages.dart';
-import 'app/theme/app_theme.dart';
-import 'app/translations/app_translations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
