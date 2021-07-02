@@ -4,7 +4,7 @@ pwd=$(pwd)
 BASEDIR=$(dirname "$0")
 lib=${BASEDIR%\/bin}/lib
 template=${BASEDIR%\/bin}/template
-version="2.0.0-null-safety"
+version="2.0.0-without-null-safety"
 no_pub=0
 
 function usage() {
@@ -78,13 +78,16 @@ Run \"getx install\" to install getx pattern in your project."
 }
 
 if [ "$1" == "install" ]; then
+    sdk=">=2.12.0 <3.0.0"
     if [ "$2" == "--null-safety" ]; then
         git -C "${BASEDIR%\/bin}" checkout checkout Get-2.0.0-null-safety
         git -C "${BASEDIR%\/bin}" checkout Get-2.0.0-null-safety
+        sdk=">=2.12.0 <3.0.0"
     fi
     if [ "$2" == "--without-null-safety" ]; then
         git -C "${BASEDIR%\/bin}" checkout checkout Get-2.0.0-without-null-safety
         git -C "${BASEDIR%\/bin}" checkout Get-2.0.0-without-null-safety
+        sdk=">=2.7.0 <3.0.0"
     fi
     FILE=$pwd/pubspec.yaml
     if [ -f "$FILE" ]; then
@@ -97,7 +100,7 @@ if [ "$1" == "install" ]; then
         sed -i -e "/\(>=\).*/d" pubspec.yaml
         sed -i -e "/\(flutter_spinkit:\).*/d" pubspec.yaml
         sed -i -e "s/\(cupertino_icons:\)/\get: ^4.1.4\n  flutter_spinkit: ^5.0.0\n  cupertino_icons:/" pubspec.yaml
-        sed -i -e "s/\(environment:\)/\environment:\n  sdk: \">=2.12.0 <3.0.0\"/" pubspec.yaml
+        sed -i -e "s/\(environment:\)/\environment:\n  sdk: \"$sdk\"/" pubspec.yaml
 
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/api/api_connect.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/api/api_error.dart
