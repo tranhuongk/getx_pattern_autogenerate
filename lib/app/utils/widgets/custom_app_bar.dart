@@ -9,7 +9,7 @@ class CustomAppBar extends AppBar {
   }) : super(
           backgroundColor: backgroundColor ?? Colors.transparent,
           elevation: elevation ?? 0,
-          brightness:
-              brightness ?? Get.isDarkMode ? Brightness.dark : Brightness.light,
+          brightness: brightness ??
+              (Get.isDarkMode ? Brightness.dark : Brightness.light),
         );
 }
