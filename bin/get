@@ -80,12 +80,10 @@ Run \"getx install\" to install getx pattern in your project."
 if [ "$1" == "install" ]; then
     sdk=">=2.12.0 <3.0.0"
     if [ "$2" == "--null-safety" ]; then
-        git -C "${BASEDIR%\/bin}" checkout checkout Get-2.0.0-null-safety
         git -C "${BASEDIR%\/bin}" checkout Get-2.0.0-null-safety
         sdk=">=2.12.0 <3.0.0"
     fi
     if [ "$2" == "--without-null-safety" ]; then
-        git -C "${BASEDIR%\/bin}" checkout checkout Get-2.0.0-without-null-safety
         git -C "${BASEDIR%\/bin}" checkout Get-2.0.0-without-null-safety
         sdk=">=2.7.0 <3.0.0"
     fi
@@ -353,6 +351,14 @@ else
                         echo "-----------------------------
 GetX Pattern Version: v$version
 -----------------------------"
+                        exit
+                        ;;
+                    --null-safety | null-safety)
+                        git -C "${BASEDIR%\/bin}" checkout Get-2.0.0-null-safety
+                        exit
+                        ;;
+                    --without-null-safety | without-null-safety)
+                        git -C "${BASEDIR%\/bin}" checkout Get-2.0.0-without-null-safety
                         exit
                         ;;
                     esac
