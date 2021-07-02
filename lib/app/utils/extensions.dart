@@ -8,12 +8,12 @@ extension StringLog on String {
   }
 
   void logStr({
-    String name,
-    Object error,
+    String? name,
+    Object? error,
   }) {
     return log(
       this,
-      name: name,
+      name: name ?? "",
       error: error,
     );
   }

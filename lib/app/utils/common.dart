@@ -42,5 +42,5 @@ class Common {
     );
   }
 
-  static void dismissKeyboard() => Get.focusScope.unfocus();
+  static void dismissKeyboard() => Get.focusScope!.unfocus();
 }

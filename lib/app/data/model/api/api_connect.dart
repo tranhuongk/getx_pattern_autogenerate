@@ -9,7 +9,7 @@ import 'package:getx_pattern_form/app/utils/constants.dart';
 class ApiConnect extends GetConnect {
   static final ApiConnect _internal = ApiConnect._();
   static final ApiConnect instance = ApiConnect();
-  Map<String, dynamic> _reqBody;
+  Map<String, dynamic>? _reqBody;
 
   factory ApiConnect() {
     return _internal;
@@ -20,7 +20,7 @@ class ApiConnect extends GetConnect {
     logPrint = print;
     timeout = Constants.timeout;
 
-    httpClient.addRequestModifier((request) {
+    httpClient.addRequestModifier<dynamic>((request) {
       print('request');
       logPrint('************** Request **************');
       _printKV('uri', request.url);
@@ -29,18 +29,18 @@ class ApiConnect extends GetConnect {
       logPrint('headers:');
       request.headers.forEach((key, v) => _printKV(' $key', v));
       logPrint('data:');
-      if (_reqBody != null) _reqBody.forEach((key, v) => _printKV(' $key', v));
+      if (_reqBody != null) _reqBody?.forEach((key, v) => _printKV(' $key', v));
       logPrint('*************************************');
       return request;
     });
 
     httpClient.addResponseModifier((request, response) {
       logPrint('************** Response **************');
-      _printKV('uri', response.request?.url);
-      _printKV('statusCode', response.statusCode);
+      _printKV('uri', response.request!.url);
+      _printKV('statusCode', response.statusCode!);
       if (response.headers != null) {
         logPrint('headers:');
-        response.headers.forEach((key, v) => _printKV(' $key', v));
+        response.headers?.forEach((key, v) => _printKV(' $key', v));
       }
       logPrint('Response Text:');
       _printAll(response.bodyString);
@@ -49,15 +49,15 @@ class ApiConnect extends GetConnect {
     });
   }
 
-  void Function(Object object) logPrint;
+  late void Function(Object object) logPrint;
 
   @override
   Future<Response<T>> get<T>(
     String url, {
-    Map<String, String> headers,
-    String contentType,
-    Map<String, dynamic> query,
-    Decoder<T> decoder,
+    Map<String, String>? headers,
+    String? contentType,
+    Map<String, dynamic>? query,
+    Decoder<T>? decoder,
   }) {
     _checkIfDisposed();
 
@@ -77,13 +77,13 @@ class ApiConnect extends GetConnect {
 
   @override
   Future<Response<T>> post<T>(
-    String url,
+    String? url,
     dynamic body, {
-    String contentType,
-    Map<String, String> headers,
-    Map<String, dynamic> query,
-    Decoder<T> decoder,
-    Progress uploadProgress,
+    String? contentType,
+    Map<String, String>? headers,
+    Map<String, dynamic>? query,
+    Decoder<T>? decoder,
+    Progress? uploadProgress,
   }) {
     _checkIfDisposed();
 
@@ -129,7 +129,7 @@ extension ResErr<T> on Response<T> {
     }
 
     try {
-      final res = jsonDecode(this.bodyString);
+      final res = jsonDecode(this.bodyString!);
 
       if (this.isOk) {
         if (res is Map &&
@@ -148,7 +148,7 @@ extension ResErr<T> on Response<T> {
           }
         }
 
-        return this.body;
+        return this.body!;
       } else {
         if (status.isServerError) {
           throw UnknownError();

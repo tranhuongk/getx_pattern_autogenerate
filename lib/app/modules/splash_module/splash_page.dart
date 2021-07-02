@@ -28,7 +28,7 @@ class SplashPage extends GetView {
             alignment: Alignment.bottomCenter,
             child: Container(
               margin: EdgeInsets.only(
-                bottom: Get.context.mediaQueryPadding.bottom + 10,
+                bottom: Get.context!.mediaQueryPadding.bottom + 10,
               ),
               child: CircularProgressIndicator(),
             ),
