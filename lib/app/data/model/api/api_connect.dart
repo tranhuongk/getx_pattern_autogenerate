@@ -8,7 +8,7 @@ import 'package:getx_pattern_form/app/utils/constants.dart';
 
 class ApiConnect extends GetConnect {
   static final ApiConnect _internal = ApiConnect._();
-  static final ApiConnect instance = ApiConnect();
+  static ApiConnect get instance => _internal;
   Map<String, dynamic>? _reqBody;
 
   factory ApiConnect() {
