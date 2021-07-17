@@ -361,6 +361,22 @@ GetX Pattern Version: v$version
                         git -C "${BASEDIR%\/bin}" checkout Get-2.0.0-without-null-safety
                         exit
                         ;;
+
+                    --string | string)
+                        if [ "$2" == "" ]; then
+                            echo "getx string [variable name] [value]"
+
+                        else
+                            if [ "$3" == "" ]; then
+                                echo "getx string [variable name] [value]"
+                            else
+                                sed -i -e "s/\(}\)/  static const String $2 = '$3';\n}/" "$pwd/lib/app/utils/app_strings.dart"
+                                rm -rf "$pwd/lib/app/utils/app_strings.dart-e"
+                            fi
+                        fi
+                        exit
+                        ;;
+
                     esac
                     shift
                 done

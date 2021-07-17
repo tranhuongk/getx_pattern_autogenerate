@@ -7,13 +7,8 @@ import 'package:getx_pattern_form/app/data/model/api/api_error.dart';
 import 'package:getx_pattern_form/app/utils/constants.dart';
 
 class ApiConnect extends GetConnect {
-  static final ApiConnect _internal = ApiConnect._();
-  static ApiConnect get instance => _internal;
+  static final ApiConnect instance = ApiConnect._();
   Map<String, dynamic> _reqBody;
-
-  factory ApiConnect() {
-    return _internal;
-  }
 
   ApiConnect._() {
     baseUrl = Constants.baseUrl;
@@ -121,7 +116,7 @@ class ApiConnect extends GetConnect {
 }
 
 extension ResErr<T> on Response<T> {
-  T body() {
+  T getBody() {
     final status = this.status;
 
     if (status.connectionError) {
