@@ -332,13 +332,13 @@ else
                     rm -rf "$pwd/lib/app/routes/app_pages.dart-e"
 
                     # App Routes
-                    sed -i -e "/\($routename\).*/d" "$pwd/lib/app/routes/app_routes.dart"
+                    # sed -i -e "/\($routename\).*/d" "$pwd/lib/app/routes/app_routes.dart"
                     sed -i -e "s/\(}\)/  static const $routename = '\/${lowername}'; \/\/ $classname Page\n}/" "$pwd/lib/app/routes/app_routes.dart"
                     sed -i -e "s/..\/..\//package:$package_name\//" "$pwd/lib/app/routes/app_routes.dart"
                     rm -rf "$pwd/lib/app/routes/app_routes.dart-e"
 
                     echo -e "  lib/app/data/provider/${lowername}_provider.dart"
-                    echo "  lib/app/data/repository/${lowername}_repository.dart"
+                    # echo "  lib/app/data/repository/${lowername}_repository.dart"
                     echo "  lib/app/modules/${lowername}_module/${lowername}_binding.dart"
                     echo "  lib/app/modules/${lowername}_module/${lowername}_controller.dart"
                     echo "  lib/app/modules/${lowername}_module/${lowername}_page.dart"
