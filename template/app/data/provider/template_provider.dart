@@ -8,7 +8,7 @@ class TemplateProvider {
   // Get request
   Future<User> getUser() async {
     return User.fromJson(
-      (await ApiConnect.instance.get(Constants.user)).body(),
+      (await ApiConnect.instance.get(Constants.user)).getBody(),
     );
   }
 }

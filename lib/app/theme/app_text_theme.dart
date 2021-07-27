@@ -16,7 +16,12 @@ import 'package:flutter/material.dart';
 class AppTextStyles {
   AppTextStyles._();
 
-  static const TextStyle bold16White = TextStyle(
+  static const TextStyle baseStyle = TextStyle(
+    fontFamily: '',
+    decoration: TextDecoration.none,
+  );
+
+  static final TextStyle bold16White = baseStyle.copyWith(
     fontWeight: FontWeight.bold,
     color: AppColors.white,
     fontSize: 16,
