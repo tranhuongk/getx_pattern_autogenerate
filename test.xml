@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>Debt Now App - Appcast</title>
+        <item>
+            <title>Version 1.0.7</title>
+            <description>Minor updates and improvements.</description>
+            <sparkle:version>1.0.7</sparkle:version>
+            <enclosure url="https://play.google.com/store/apps/details?id=com.hebela.store" sparkle:version="1.0.7" sparkle:os="android" />
+            <enclosure url="https://apps.apple.com/gh/app/id1571872288" sparkle:version="1.0.7" sparkle:os="iOS" />
+        </item>
+    </channel>
+</rss>
