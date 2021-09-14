@@ -12,3 +12,9 @@ class AppTranslation {
     'vi': vi_VN,
   };
 }
+
+class AppTranslationKey {
+  AppTranslationKey._();
+  static const String home = 'home';
+  static const String disc = 'disc';
+}
