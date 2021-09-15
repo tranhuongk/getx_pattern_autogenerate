@@ -58,7 +58,7 @@ class Common {
               ),
               content: Text(
                 'Are you sure you want to delete this ${content ?? "feature"}?',
-                style: AppTextStyles.baseStyle,
+                style: AppTextStyles.normal16White,
                 textAlign: TextAlign.center,
               ),
               actions: [
@@ -89,7 +89,7 @@ class Common {
               ),
               content: Text(
                 title ?? 'Are you sure you want to delete this feature?',
-                style: AppTextStyles.baseStyle,
+                style: AppTextStyles.normal16White,
               ),
               actions: [
                 CupertinoButton(
@@ -152,7 +152,7 @@ class Common {
                     padding: EdgeInsets.all(16),
                     child: Text(
                       title ?? 'Successful',
-                      style: AppTextStyles.baseStyle,
+                      style: AppTextStyles.normal16White,
                       textAlign: TextAlign.center,
                     ),
                   )

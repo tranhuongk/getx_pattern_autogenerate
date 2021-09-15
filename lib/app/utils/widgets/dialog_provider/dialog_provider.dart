@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lttm/app/utils/widgets/dialog_provider/view_dialog/dialog_custom_widget.dart';
+import 'package:getx_pattern_form/app/utils/widgets/dialog_provider/view_dialog/dialog_custom_widget.dart';
 
 class DialogProvider {
   DialogProvider._();

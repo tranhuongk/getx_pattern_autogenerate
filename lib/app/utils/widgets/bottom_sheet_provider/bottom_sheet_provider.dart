@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:get/get.dart';
-import 'package:lttm/app/theme/app_colors.dart';
-import 'package:lttm/app/theme/app_text_theme.dart';
-import 'package:lttm/app/utils/widgets/app_button/base_button.dart';
+import 'package:getx_pattern_form/app/theme/app_text_theme.dart';
 
 class BottomSheetProvider {
   static showDatePicker(

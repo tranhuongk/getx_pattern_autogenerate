@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lttm/app/theme/app_colors.dart';
+import 'package:getx_pattern_form/app/theme/app_colors.dart';
 
 class AppDivider extends Divider {
   const AppDivider({

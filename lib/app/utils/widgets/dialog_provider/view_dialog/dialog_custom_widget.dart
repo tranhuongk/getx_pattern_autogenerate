@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lttm/app/theme/app_colors.dart';
-import 'package:lttm/app/theme/app_text_theme.dart';
-import 'package:lttm/app/utils/widgets/app_button/base_button.dart';
-import 'package:lttm/app/utils/widgets/app_divider/app_divider.dart';
+import 'package:getx_pattern_form/app/theme/app_colors.dart';
+import 'package:getx_pattern_form/app/theme/app_text_theme.dart';
+import 'package:getx_pattern_form/app/utils/widgets/app_button/base_button.dart';
+import 'package:getx_pattern_form/app/utils/widgets/app_divider/app_divider.dart';
 
 class DialogCustomWidget extends StatelessWidget {
   const DialogCustomWidget(
