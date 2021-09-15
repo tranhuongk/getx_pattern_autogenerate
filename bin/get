@@ -127,6 +127,11 @@ if [ "$1" == "install" ]; then
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/constants.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/extensions.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/loading.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/app_button/app_button.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/app_divider/app_divider.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/bottom_sheet_provider/bottom_sheet_provider.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/dialog_provider/view_dialog/dialog_custom_widget.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/dialog_provider/dialog_provider.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/main.dart
 
         rm -rf lib/app/data/model/api/api_connect.dart-e
@@ -156,6 +161,11 @@ if [ "$1" == "install" ]; then
         rm -rf lib/app/utils/constants.dart-e
         rm -rf lib/app/utils/extensions.dart-e
         rm -rf lib/app/utils/loading.dart-e
+        rm -rf lib/app/utils/widgets/app_button/app_button.dart-e
+        rm -rf lib/app/utils/widgets/app_divider/app_divider.dart-e
+        rm -rf lib/app/utils/widgets/bottom_sheet_provider/bottom_sheet_provider.dart-e
+        rm -rf lib/app/utils/widgets/dialog_provider/view_dialog/dialog_custom_widget.dart-e
+        rm -rf lib/app/utils/widgets/dialog_provider/dialog_provider.dart-e
         rm -rf lib/main.dart-e
 
         rm -rf pubspec.yaml-e
@@ -178,21 +188,25 @@ if [ "$1" == "install" ]; then
         echo "  lib/app/translations/app_translations.dart"
         echo "  lib/app/translations/en_US.dart"
         echo "  lib/app/translations/vi_VN.dart"
-        echo "  lib/app/utils/widgets/custom_app_bar.dart"
+        echo "  lib/app/utils/widgets/app_bar/custom_app_bar.dart"
         echo "  lib/app/utils/widgets/gradient_fa_icon.dart"
         echo "  lib/app/utils/widgets/gradient_text.dart"
         echo "  lib/app/utils/widgets/widget.dart"
-        echo "  lib/app/utils/app_strings.dart"
         echo "  lib/app/utils/common.dart"
         echo "  lib/app/utils/constants.dart"
         echo "  lib/app/utils/extensions.dart"
         echo "  lib/app/utils/loading.dart"
+        echo "  lib/app/utils/widgets/app_button/app_button.dart"
+        echo "  lib/app/utils/widgets/app_divider/app_divider.dart"
+        echo "  lib/app/utils/widgets/bottom_sheet_provider/bottom_sheet_provider.dart"
+        echo "  lib/app/utils/widgets/dialog_provider/view_dialog/dialog_custom_widget.dart"
+        echo "  lib/app/utils/widgets/dialog_provider/dialog_provider.dart"
         echo "  lib/main.dart"
 
         dart pub upgrade --major-versions
         flutter pub get
 
-        echo -e "Wrote 28 files.\n\nAll done!"
+        echo -e "Wrote 31 files.\n\nAll done!"
     else
         echo "----------------------------------------------------------------
 
