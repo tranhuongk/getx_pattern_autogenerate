@@ -85,7 +85,7 @@ class GradientIcon extends StatelessWidget {
               LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
-                colors: colors ?? AppColors.redAccent2greenLight,
+                colors: colors ?? [Colors.red, Colors.green],
               ))
           .createShader(bounds),
       child: Icon(

@@ -3,6 +3,12 @@ import 'package:get/get.dart';
 import 'package:getx_pattern_form/app/translations/en_US.dart';
 import 'package:getx_pattern_form/app/translations/vi_VN.dart';
 
+class AppTranslationKey {
+  AppTranslationKey._();
+  static const String home = 'home';
+  static const String disc = 'disc';
+}
+
 class AppTranslation {
   AppTranslation._();
 
@@ -11,10 +17,4 @@ class AppTranslation {
     'en': en_US,
     'vi': vi_VN,
   };
-}
-
-class AppTranslationKey {
-  AppTranslationKey._();
-  static const String home = 'home';
-  static const String disc = 'disc';
 }
