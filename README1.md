@@ -133,9 +133,9 @@ The purpose of this is to get you to use GetX and take full advantage of its pow
 Why? Imagine that you have a controller with two repositories, and that controller is being used with a GetX widget on a page, using data retrieved by the controller from the two repositories.  
 Whenever an entity is modified, the controller will update its widgets responsible for the two variables, one of which did not need to be changed. So separating a repository by controller, it can be a good practice when working with the GetX widget, having a responsible controller for each widget, which somehow shows this information from them, rendering only the widget that had its .obs variable changed. .
 #### Bindings
-Ideal for your dependency management, bindings can initialize your controllers and repositories, apis and whatever you need, without having to call them directly from View with GetView<YourController>!
+Ideal for your dependency management, bindings can initialize your controllers and repositories, apis and whatever you need, without having to call them directly from View with GetWidget<YourController>!
 #### Page
-Your module interface using YourPage extends GetView<YourController>.
+Your module interface using YourPage extends GetWidget<YourController>.
 
 ![](images/rocket.png)
 
