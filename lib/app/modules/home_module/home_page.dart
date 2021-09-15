@@ -4,7 +4,7 @@ import 'package:getx_pattern_form/app/modules/home_module/home_controller.dart';
 import 'package:getx_pattern_form/app/translations/app_translations.dart';
 import 'package:getx_pattern_form/app/utils/common.dart';
 
-class HomePage extends GetView<HomeController> {
+class HomePage extends GetWidget<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
