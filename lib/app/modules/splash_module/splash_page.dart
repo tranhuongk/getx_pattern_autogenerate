@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_pattern_form/app/routes/app_pages.dart';
-import 'package:getx_pattern_form/app/utils/widgets/custom_app_bar.dart';
+import 'package:getx_pattern_form/app/utils/widgets/app_bar/custom_app_bar.dart';
 
 class SplashPage extends GetView {
   @override

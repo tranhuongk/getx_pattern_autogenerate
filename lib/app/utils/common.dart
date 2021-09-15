@@ -19,7 +19,7 @@ class Common {
       ),
       margin: EdgeInsets.all(20),
       borderRadius: 24,
-      backgroundColor: AppColors.redAccent,
+      backgroundColor: AppColors.red,
       duration: Duration(milliseconds: 2000),
     ));
   }
@@ -32,7 +32,7 @@ class Common {
           width: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(5)),
-            color: AppColors.gray2,
+            color: AppColors.gray,
           ),
           child: SpinKitFadingCircle(
             size: 50,
@@ -58,7 +58,7 @@ class Common {
               ),
               content: Text(
                 'Are you sure you want to delete this ${content ?? "feature"}?',
-                style: AppTextStyles.baseStyle,
+                style: AppTextStyles.normal16White,
                 textAlign: TextAlign.center,
               ),
               actions: [
@@ -89,7 +89,7 @@ class Common {
               ),
               content: Text(
                 title ?? 'Are you sure you want to delete this feature?',
-                style: AppTextStyles.baseStyle,
+                style: AppTextStyles.normal16White,
               ),
               actions: [
                 CupertinoButton(
@@ -152,7 +152,7 @@ class Common {
                     padding: EdgeInsets.all(16),
                     child: Text(
                       title ?? 'Successful',
-                      style: AppTextStyles.baseStyle,
+                      style: AppTextStyles.normal16White,
                       textAlign: TextAlign.center,
                     ),
                   )
