@@ -1,5 +1,5 @@
-class Constants {
-  const Constants._();
+class EndPoints {
+  const EndPoints._();
 
   static const String baseUrl = 'https://yourapi/';
   static const String login = "auth/login";

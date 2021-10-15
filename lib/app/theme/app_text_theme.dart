@@ -13,69 +13,145 @@ import 'package:flutter/material.dart';
 ///     decoration: TextDecoration.underline,
 /// );
 /// ```
+
 class AppTextStyles {
   AppTextStyles._();
-
-  static const TextStyle normal16White = TextStyle(
-    fontWeight: FontWeight.normal,
-    color: AppColors.white,
+  static const TextStyle base = TextStyle(
+    // fontFamily: "",
     fontSize: 16,
-  );
-  static const TextStyle medium16White = TextStyle(
-    fontWeight: FontWeight.w500,
-    color: AppColors.white,
-    fontSize: 16,
-  );
-  static const TextStyle semiBold16White = TextStyle(
-    fontWeight: FontWeight.w600,
-    color: AppColors.white,
-    fontSize: 16,
-  );
-  static const TextStyle bold16White = TextStyle(
-    fontWeight: FontWeight.bold,
-    color: AppColors.white,
-    fontSize: 16,
-  );
-
-  static const TextStyle normal16Black = TextStyle(
-    fontWeight: FontWeight.normal,
-    color: AppColors.black,
-    fontSize: 16,
-  );
-  static const TextStyle medium16Black = TextStyle(
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-    fontSize: 16,
-  );
-  static const TextStyle semiBold16Black = TextStyle(
-    fontWeight: FontWeight.w600,
-    color: AppColors.black,
-    fontSize: 16,
-  );
-  static const TextStyle bold16Black = TextStyle(
-    fontWeight: FontWeight.bold,
-    color: AppColors.black,
-    fontSize: 16,
-  );
-
-  static const TextStyle normal16PrimaryColor = TextStyle(
     fontWeight: FontWeight.normal,
     color: AppColors.kPrimaryColor,
-    fontSize: 16,
   );
-  static const TextStyle medium16PrimaryColor = TextStyle(
-    fontWeight: FontWeight.w500,
-    color: AppColors.kPrimaryColor,
-    fontSize: 16,
-  );
-  static const TextStyle semiBold16PrimaryColor = TextStyle(
-    fontWeight: FontWeight.w600,
-    color: AppColors.kPrimaryColor,
-    fontSize: 16,
-  );
-  static const TextStyle bold16PrimaryColor = TextStyle(
-    fontWeight: FontWeight.bold,
-    color: AppColors.kPrimaryColor,
-    fontSize: 16,
-  );
+}
+
+extension AppFontWeight on TextStyle {
+  /// FontWeight.w100
+  TextStyle get thin => this.copyWith(
+        fontWeight: FontWeight.w100,
+      );
+
+  /// FontWeight.w200
+  TextStyle get extraThin => this.copyWith(
+        fontWeight: FontWeight.w200,
+      );
+
+  /// FontWeight.w300
+  TextStyle get light => this.copyWith(
+        fontWeight: FontWeight.w300,
+      );
+
+  /// FontWeight.w400
+  TextStyle get regular => this.copyWith(
+        fontWeight: FontWeight.w400,
+      );
+
+  /// FontWeight.w500
+  TextStyle get medium => this.copyWith(
+        fontWeight: FontWeight.w500,
+      );
+
+  /// FontWeight.w600
+  TextStyle get semiBold => this.copyWith(
+        fontWeight: FontWeight.w600,
+      );
+
+  /// FontWeight.w700
+  TextStyle get bold => this.copyWith(
+        fontWeight: FontWeight.w700,
+      );
+
+  /// FontWeight.w800
+  TextStyle get extraBold => this.copyWith(
+        fontWeight: FontWeight.w800,
+      );
+
+  /// FontWeight.w900
+  TextStyle get wBlack => this.copyWith(
+        fontWeight: FontWeight.w900,
+      );
+}
+
+extension AppFontSize on TextStyle {
+  /// fontSize: 10
+  TextStyle get s10 => this.copyWith(
+        fontSize: 10,
+      );
+
+  /// fontSize: 12
+  TextStyle get s12 => this.copyWith(
+        fontSize: 12,
+      );
+
+  /// fontSize: 14
+  TextStyle get s14 => this.copyWith(
+        fontSize: 14,
+      );
+
+  /// fontSize: 16
+  TextStyle get s16 => this.copyWith(
+        fontSize: 16,
+      );
+
+  /// fontSize: 18
+  TextStyle get s18 => this.copyWith(
+        fontSize: 18,
+      );
+
+  /// fontSize: 20
+  TextStyle get s20 => this.copyWith(
+        fontSize: 20,
+      );
+
+  /// fontSize: 24
+  TextStyle get s24 => this.copyWith(
+        fontSize: 24,
+      );
+
+  /// fontSize: 32
+  TextStyle get s32 => this.copyWith(
+        fontSize: 32,
+      );
+
+  /// fontSize: 40
+  TextStyle get s40 => this.copyWith(
+        fontSize: 40,
+      );
+
+  /// fontSize: 48
+  TextStyle get s48 => this.copyWith(
+        fontSize: 48,
+      );
+}
+
+extension AppFontColor on TextStyle {
+  /// color: AppColors.white,
+  TextStyle get whiteColor => this.copyWith(color: AppColors.white);
+
+  /// color: AppColors.black,
+  TextStyle get blackColor => this.copyWith(color: AppColors.black);
+
+  /// color: AppColors.kPrimaryColor,
+  TextStyle get kPrimaryColor => this.copyWith(color: AppColors.kPrimaryColor);
+}
+
+extension AppFontStyle on TextStyle {
+  /// color: AppColors.white,
+  TextStyle get italic => this.copyWith(fontStyle: FontStyle.italic);
+}
+
+extension AppFontDecoration on TextStyle {
+  /// decoration: TextDecoration.overline,
+  TextStyle get overline => this.copyWith(decoration: TextDecoration.overline);
+
+  /// decoration: TextDecoration.underline,
+  TextStyle get underline =>
+      this.copyWith(decoration: TextDecoration.underline);
+
+  /// decoration: TextDecoration.overline,
+  TextStyle get noneDecoration =>
+      this.copyWith(decoration: TextDecoration.none);
+
+  /// decoration: TextDecoration.lineThrough,
+  TextStyle get lineThrough =>
+      this.copyWith(decoration: TextDecoration.lineThrough);
 }

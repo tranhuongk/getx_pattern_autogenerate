@@ -1,5 +1,10 @@
 const Map<String, String> en_US = {
-  'hi': 'Hello',
-  'home': 'Home',
-  'disc': 'You have pushed the button this many times:',
+  // API Error
+  "unknownError": "Unknown error. Please try again later!",
+  "timeoutError": "Connection timeout. Please try again later!",
+  "noConnectionError": "No connection. Please check your internet!",
+  "unauthorizedError": "Unauthorized. Please try again later!",
+  "tryAgain": "Try again",
+  "identify": "Identify",
+  "notMatch": "Face is not registered!",
 };

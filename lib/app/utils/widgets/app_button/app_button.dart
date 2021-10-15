@@ -8,7 +8,7 @@ class AppButton extends StatelessWidget {
     required this.onPressed,
     this.text,
     this.color = AppColors.kPrimaryColor,
-    this.style = AppTextStyles.medium16White,
+    this.style,
     this.prefixIcon,
     this.suffixIcon,
     this.padding = const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
@@ -21,7 +21,7 @@ class AppButton extends StatelessWidget {
     required this.onPressed,
     this.text,
     this.color = AppColors.kPrimaryColor,
-    this.style = AppTextStyles.medium16White,
+    this.style,
     this.prefixIcon,
     this.suffixIcon,
     this.padding = const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
@@ -34,7 +34,7 @@ class AppButton extends StatelessWidget {
   final String? text;
   final VoidCallback? onPressed;
   final Color color;
-  final TextStyle style;
+  final TextStyle? style;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final EdgeInsets padding;
@@ -42,6 +42,7 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle _style = style ?? AppTextStyles.base.medium.s16;
     return ClipRRect(
       borderRadius: BorderRadius.circular(6),
       child: BaseButton(
@@ -67,7 +68,7 @@ class AppButton extends StatelessWidget {
               if (text != null)
                 Text(
                   text ?? "",
-                  style: isOutline ? style.copyWith(color: color) : style,
+                  style: isOutline ? _style.copyWith(color: color) : _style,
                 ),
               if (suffixIcon != null)
                 Padding(

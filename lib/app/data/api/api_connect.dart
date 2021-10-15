@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/status/http_status.dart';
-import 'package:getx_pattern_form/app/data/model/api/api_error.dart';
+import 'package:getx_pattern_form/app/data/api/api_error.dart';
 import 'package:getx_pattern_form/app/utils/constants.dart';
 
 class ApiConnect extends GetConnect {
@@ -11,9 +11,9 @@ class ApiConnect extends GetConnect {
   Map<String, dynamic>? _reqBody;
 
   ApiConnect._() {
-    baseUrl = Constants.baseUrl;
+    baseUrl = EndPoints.baseUrl;
     logPrint = print;
-    timeout = Constants.timeout;
+    timeout = EndPoints.timeout;
 
     httpClient.addRequestModifier<dynamic>((request) {
       print('request');
@@ -108,7 +108,7 @@ class ApiConnect extends GetConnect {
     msg.toString().split('\n').forEach(logPrint);
   }
 
-  void _checkIfDisposed({bool isHttp = true}) {
+  void _checkIfDisposed() {
     if (isDisposed) {
       throw 'Can not emit events to disposed clients';
     }
@@ -124,47 +124,36 @@ extension ResErr<T> on Response<T> {
     }
 
     try {
-      final res = jsonDecode(this.bodyString!);
-
       if (this.isOk) {
+        final res = jsonDecode(this.bodyString!);
         if (res is Map &&
             res['status'] != null &&
             ((res['status'] is bool && !res['status']) ||
                 res['status'] is String && res['status'] != 'OK')) {
           if (res['error_message'] != null &&
               res['error_message'].toString().isNotEmpty) {
-            throw UnknownError(
-              message: res['error_message']?.toString(),
-            );
+            throw UnknownError();
           } else {
-            throw UnknownError(
-              message: res['message']?.toString(),
-            );
+            throw UnknownError();
           }
         }
 
         return this.body!;
       } else {
-        if (status.isServerError) {
-          throw UnknownError();
-        } else if (status.code == HttpStatus.requestTimeout) {
+        if (status.code == HttpStatus.requestTimeout) {
           throw TimeoutError();
         } else if (this.unauthorized) {
-          throw UnauthorizeError(
-            message: res['message']?.toString(),
-          );
+          throw UnauthorizedError();
+        } else if (status.code == HttpStatus.unauthorized) {
+          throw UnauthorizedError();
         } else {
-          throw UnknownError(
-            message: res['message']?.toString(),
-          );
+          throw UnknownError();
         }
       }
-    } on FormatException catch (e) {
-      throw UnknownError(message: e.toString());
-    } on TimeoutException catch (e) {
-      throw TimeoutError(
-        message: e.message?.toString(),
-      );
+    } on FormatException catch (_) {
+      throw UnknownError();
+    } on TimeoutException catch (_) {
+      throw TimeoutError();
     }
   }
 }
