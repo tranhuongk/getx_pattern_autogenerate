@@ -15,7 +15,7 @@ class Common {
     Get.showSnackbar(GetBar(
       messageText: Text(
         error,
-        style: AppTextStyles.bold16White,
+        style: AppTextStyles.base.w700.s16.whiteColor,
       ),
       margin: EdgeInsets.all(20),
       borderRadius: 24,
@@ -53,12 +53,12 @@ class Common {
           ? CupertinoAlertDialog(
               title: Text(
                 title ?? 'Delete confirmation',
-                style: AppTextStyles.bold16White,
+                style: AppTextStyles.base.w700.s16.whiteColor,
                 textAlign: TextAlign.center,
               ),
               content: Text(
                 'Are you sure you want to delete this ${content ?? "feature"}?',
-                style: AppTextStyles.normal16White,
+                style: AppTextStyles.base.w400.s16.whiteColor,
                 textAlign: TextAlign.center,
               ),
               actions: [
@@ -85,11 +85,11 @@ class Common {
           : AlertDialog(
               title: Text(
                 title ?? 'Delete confirmation',
-                style: AppTextStyles.bold16White,
+                style: AppTextStyles.base.w700.s16.whiteColor,
               ),
               content: Text(
                 title ?? 'Are you sure you want to delete this feature?',
-                style: AppTextStyles.normal16White,
+                style: AppTextStyles.base.w400.s16.whiteColor,
               ),
               actions: [
                 CupertinoButton(
@@ -152,7 +152,7 @@ class Common {
                     padding: EdgeInsets.all(16),
                     child: Text(
                       title ?? 'Successful',
-                      style: AppTextStyles.normal16White,
+                      style: AppTextStyles.base.w400.s16.whiteColor,
                       textAlign: TextAlign.center,
                     ),
                   )

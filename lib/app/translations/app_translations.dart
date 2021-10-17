@@ -5,8 +5,16 @@ import 'package:getx_pattern_form/app/translations/vi_VN.dart';
 
 class AppTranslationKey {
   AppTranslationKey._();
-  static const String home = 'home';
-  static const String disc = 'disc';
+
+  // API Error
+  static String get unknownError => "unknownError".tr;
+  static String get timeoutError => "timeoutError".tr;
+  static String get noConnectionError => "noConnectionError".tr;
+  static String get unauthorizedError => "unauthorizedError".tr;
+  static String get tryAgain => "tryAgain".tr;
+  static String get identify => "identify".tr;
+  static String get notMatch => "notMatch".tr;
+  static String get noEmpty => "noEmpty".tr;
 }
 
 class AppTranslation {
