@@ -54,7 +54,7 @@ class DialogCustomWidget extends StatelessWidget {
                         : Center(
                             child: Text(
                               title ?? "",
-                              style: AppTextStyles.base.semiBold.blackColor,
+                              style: AppTextStyles.base.w600.blackColor,
                             ),
                           ),
                   ),

@@ -4,15 +4,18 @@ class AppColors {
   AppColors._();
 
   static const MaterialColor kPrimaryColor = MaterialColor(
-    0xFF003469,
+    0xFFEE4463,
     <int, Color>{
-      50: Color(0x24003469),
-      100: Color(0xFFBAD1FF),
-      200: Color(0xFF8EA6E7),
-      300: Color(0xFF647EBB),
-      400: Color(0xFF395791),
-      500: Color(0xFF003469),
-      700: Color(0xFF001D4E),
+      50: Color(0x88FFC7FF),
+      100: Color(0xFFFFC7FF),
+      200: Color(0xFFF1A6AA),
+      300: Color(0xFFFF99E0),
+      400: Color(0xFFFF6DA3),
+      500: Color(0xFFEE4463),
+      600: Color(0xFFEE4463),
+      700: Color(0xFFEE4463),
+      800: Color(0xFFEE4463),
+      900: Color(0xFF895E6B),
     },
   );
 
@@ -24,4 +27,7 @@ class AppColors {
   static const Color gray = Color(0xFFAAAAAA);
   static const Color lightGray = Color(0xFF909296);
   static const Color colorDivider = Color(0xFFEBEBEB);
+
+  static const Color neutral6 = Color(0xFFF1F2F9);
+  static const Color neutral3 = Color(0xFFADAFC5);
 }

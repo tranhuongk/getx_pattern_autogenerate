@@ -55,7 +55,7 @@ class Loading extends StatelessWidget {
                   child: Center(
                     child: Text(
                       title!,
-                      style: AppTextStyles.base.bold.s16.whiteColor,
+                      style: AppTextStyles.base.w700.s16.whiteColor,
                     ),
                   ),
                 ),

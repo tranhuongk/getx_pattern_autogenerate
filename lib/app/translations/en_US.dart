@@ -7,4 +7,5 @@ const Map<String, String> en_US = {
   "tryAgain": "Try again",
   "identify": "Identify",
   "notMatch": "Face is not registered!",
+  "noEmpty": "Not be empty!",
 };

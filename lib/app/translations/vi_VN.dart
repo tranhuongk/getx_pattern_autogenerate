@@ -7,4 +7,5 @@ const Map<String, String> vi_VN = {
   "tryAgain": "Thử lại",
   "identify": "Xác thực",
   "notMatch": "Khuôn mặt chưa được đăng ký!",
+  "noEmpty": "Không được bỏ trống!",
 };

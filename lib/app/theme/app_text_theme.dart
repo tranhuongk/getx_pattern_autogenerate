@@ -1,3 +1,5 @@
+import 'package:google_fonts/google_fonts.dart';
+
 import 'app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -26,47 +28,47 @@ class AppTextStyles {
 
 extension AppFontWeight on TextStyle {
   /// FontWeight.w100
-  TextStyle get thin => this.copyWith(
+  TextStyle get w100 => this.copyWith(
         fontWeight: FontWeight.w100,
       );
 
   /// FontWeight.w200
-  TextStyle get extraThin => this.copyWith(
+  TextStyle get w200 => this.copyWith(
         fontWeight: FontWeight.w200,
       );
 
   /// FontWeight.w300
-  TextStyle get light => this.copyWith(
+  TextStyle get w300 => this.copyWith(
         fontWeight: FontWeight.w300,
       );
 
   /// FontWeight.w400
-  TextStyle get regular => this.copyWith(
+  TextStyle get w400 => this.copyWith(
         fontWeight: FontWeight.w400,
       );
 
   /// FontWeight.w500
-  TextStyle get medium => this.copyWith(
+  TextStyle get w500 => this.copyWith(
         fontWeight: FontWeight.w500,
       );
 
   /// FontWeight.w600
-  TextStyle get semiBold => this.copyWith(
+  TextStyle get w600 => this.copyWith(
         fontWeight: FontWeight.w600,
       );
 
   /// FontWeight.w700
-  TextStyle get bold => this.copyWith(
+  TextStyle get w700 => this.copyWith(
         fontWeight: FontWeight.w700,
       );
 
   /// FontWeight.w800
-  TextStyle get extraBold => this.copyWith(
+  TextStyle get w800 => this.copyWith(
         fontWeight: FontWeight.w800,
       );
 
   /// FontWeight.w900
-  TextStyle get wBlack => this.copyWith(
+  TextStyle get w900 => this.copyWith(
         fontWeight: FontWeight.w900,
       );
 }
@@ -132,6 +134,12 @@ extension AppFontColor on TextStyle {
 
   /// color: AppColors.kPrimaryColor,
   TextStyle get kPrimaryColor => this.copyWith(color: AppColors.kPrimaryColor);
+
+  /// color: AppColors.neutral3,
+  TextStyle get neutral3Color => this.copyWith(color: AppColors.neutral3);
+
+  /// color: AppColors.neutral3,
+  TextStyle get redColor => this.copyWith(color: AppColors.red);
 }
 
 extension AppFontStyle on TextStyle {
@@ -154,4 +162,10 @@ extension AppFontDecoration on TextStyle {
   /// decoration: TextDecoration.lineThrough,
   TextStyle get lineThrough =>
       this.copyWith(decoration: TextDecoration.lineThrough);
+}
+
+extension AppFontFamily on TextStyle {
+  /// fontFamily: GoogleFonts.roboto().fontFamily,
+  TextStyle get roboto =>
+      this.copyWith(fontFamily: GoogleFonts.roboto().fontFamily);
 }

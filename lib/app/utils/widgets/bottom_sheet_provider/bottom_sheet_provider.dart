@@ -12,9 +12,9 @@ class BottomSheetProvider {
         theme: DatePickerTheme(
           headerColor: Colors.white,
           backgroundColor: Colors.white,
-          itemStyle: AppTextStyles.base.regular.blackColor,
-          doneStyle: AppTextStyles.base.medium,
-          cancelStyle: AppTextStyles.base.medium,
+          itemStyle: AppTextStyles.base.w400.blackColor,
+          doneStyle: AppTextStyles.base.w500,
+          cancelStyle: AppTextStyles.base.w500,
         ), onConfirm: (date) {
       callback(date);
     }, currentTime: now, locale: locale);
@@ -29,9 +29,9 @@ class BottomSheetProvider {
         theme: DatePickerTheme(
           headerColor: Colors.white,
           backgroundColor: Colors.white,
-          itemStyle: AppTextStyles.base.regular.blackColor,
-          doneStyle: AppTextStyles.base.medium,
-          cancelStyle: AppTextStyles.base.medium,
+          itemStyle: AppTextStyles.base.w400.blackColor,
+          doneStyle: AppTextStyles.base.w500,
+          cancelStyle: AppTextStyles.base.w500,
         ), onConfirm: (date) {
       callback(date);
     }, currentTime: now, locale: locale);
@@ -45,8 +45,8 @@ class BottomSheetProvider {
           headerColor: Colors.white,
           backgroundColor: Colors.white,
           itemStyle: AppTextStyles.base.blackColor,
-          doneStyle: AppTextStyles.base.medium,
-          cancelStyle: AppTextStyles.base.medium,
+          doneStyle: AppTextStyles.base.w500,
+          cancelStyle: AppTextStyles.base.w500,
         ), onConfirm: (date) {
       callback(date);
     }, showSecondsColumn: false, currentTime: now, locale: locale);

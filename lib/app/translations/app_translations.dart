@@ -14,6 +14,7 @@ class AppTranslationKey {
   static String get tryAgain => "tryAgain".tr;
   static String get identify => "identify".tr;
   static String get notMatch => "notMatch".tr;
+  static String get noEmpty => "noEmpty".tr;
 }
 
 class AppTranslation {

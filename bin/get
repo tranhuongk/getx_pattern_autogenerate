@@ -100,8 +100,8 @@ if [ "$1" == "install" ]; then
         sed -i -e "s/\(cupertino_icons:\)/\get: ^4.1.4\n  flutter_spinkit: ^5.0.0\n  cupertino_icons:/" pubspec.yaml
         sed -i -e "s/\(environment:\)/\environment:\n  sdk: \"$sdk\"/" pubspec.yaml
 
-        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/api/api_connect.dart
-        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/api/api_error.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/api/api_connect.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/api/api_error.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/request/request.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/response/response.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/data/model/user.dart
@@ -132,10 +132,11 @@ if [ "$1" == "install" ]; then
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/bottom_sheet_provider/bottom_sheet_provider.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/dialog_provider/view_dialog/dialog_custom_widget.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/dialog_provider/dialog_provider.dart
+        sed -i -e "s/getx_pattern_form/$package_name/" lib/app/utils/widgets/app_text_field.dart/app_text_field.dart
         sed -i -e "s/getx_pattern_form/$package_name/" lib/main.dart
 
-        rm -rf lib/app/data/model/api/api_connect.dart-e
-        rm -rf lib/app/data/model/api/api_error.dart-e
+        rm -rf lib/app/data/api/api_connect.dart-e
+        rm -rf lib/app/data/api/api_error.dart-e
         rm -rf lib/app/data/model/request/request.dart-e
         rm -rf lib/app/data/model/response/response.dart-e
         rm -rf lib/app/data/model/user.dart-e
@@ -166,12 +167,13 @@ if [ "$1" == "install" ]; then
         rm -rf lib/app/utils/widgets/bottom_sheet_provider/bottom_sheet_provider.dart-e
         rm -rf lib/app/utils/widgets/dialog_provider/view_dialog/dialog_custom_widget.dart-e
         rm -rf lib/app/utils/widgets/dialog_provider/dialog_provider.dart-e
+        rm -rf lib/app/utils/widgets/app_text_field.dart/app_text_field.dart-e
         rm -rf lib/main.dart-e
 
         rm -rf pubspec.yaml-e
 
-        echo "  lib/app/data/model/api/api_connect.dart"
-        echo "  lib/app/data/model/api/api_error.dart"
+        echo "  lib/app/data/api/api_connect.dart"
+        echo "  lib/app/data/api/api_error.dart"
         echo "  lib/app/data/model/request/request.dart"
         echo "  lib/app/data/model/response/response.dart"
         echo "  lib/app/data/model/user.dart"
@@ -201,12 +203,13 @@ if [ "$1" == "install" ]; then
         echo "  lib/app/utils/widgets/bottom_sheet_provider/bottom_sheet_provider.dart"
         echo "  lib/app/utils/widgets/dialog_provider/view_dialog/dialog_custom_widget.dart"
         echo "  lib/app/utils/widgets/dialog_provider/dialog_provider.dart"
+        echo "  lib/app/utils/widgets/app_text_field.dart/app_text_field.dart"
         echo "  lib/main.dart"
 
         dart pub upgrade --major-versions
         flutter pub get
 
-        echo -e "Wrote 31 files.\n\nAll done!"
+        echo -e "Wrote 32 files.\n\nAll done!"
     else
         echo "----------------------------------------------------------------
 
